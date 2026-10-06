@@ -132,10 +132,10 @@ hust:CenterSpokesperson a owl:Class ;
         "Đầu mối phát ngôn của trung tâm"@vi ;
     rdfs:seeAlso <https://library.hust.edu.vn/vi/node/56> ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty hust:roleRepresentsOrganization ;
+            owl:onProperty hust:roleContactPointFor ;
             owl:someValuesFrom hust:Organization ],
         [ a owl:Restriction ;
-            owl:onProperty hust:roleContactPointFor ;
+            owl:onProperty hust:roleRepresentsOrganization ;
             owl:someValuesFrom hust:Organization ],
         hust:CommunicationsMedia,
         hust:Spokesperson ;
@@ -3155,16 +3155,16 @@ hust:UniversityRelation a owl:Class ;
     rdfs:seeAlso schema:Role,
         <https://www.w3.org/TR/vocab-org/> ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass hust:Person ;
+            owl:onProperty hust:roleHeldBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:onClass hust:Organization ;
             owl:onProperty hust:roleAtOrganization ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty hust:isCurrent ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onClass hust:Person ;
-            owl:onProperty hust:roleHeldBy ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     owl:hasKey ( hust:roleAtOrganization hust:roleHeldBy hust:roleTitleLiteral hust:startDate ) ;
     hust:reference schema:Role .
@@ -3206,13 +3206,7 @@ hust:Person a owl:Class ;
     hust:reference <https://www.w3.org/TR/vocab-org/> .
 
 [] a owl:AllDisjointClasses ;
-    owl:members ( hust:AdministrativeArea hust:Campus hust:Facility ) .
-
-[] a owl:AllDisjointClasses ;
-    owl:members ( hust:Building hust:Floor hust:Room hust:OutdoorSportsFacility hust:Gate hust:ParkingFacility ) .
-
-[] a owl:AllDisjointClasses ;
-    owl:members ( hust:AcademicBuilding hust:LibraryBuilding hust:Dormitory hust:SportsBuilding hust:DiningBuilding hust:ServiceBuilding ) .
+    owl:members ( hust:Country hust:Province hust:Commune hust:District ) .
 
 [] a owl:AllDisjointClasses ;
     owl:members ( hust:University hust:VocationalCollege hust:K12School ) .
@@ -3224,5 +3218,11 @@ hust:Person a owl:Class ;
     owl:members ( hust:EducationalOrganization hust:UniversityUnit hust:MassOrganization hust:Enterprise hust:GovernmentAgency ) .
 
 [] a owl:AllDisjointClasses ;
-    owl:members ( hust:Country hust:Province hust:Commune hust:District ) .
+    owl:members ( hust:Building hust:Floor hust:Room hust:OutdoorSportsFacility hust:Gate hust:ParkingFacility ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( hust:AdministrativeArea hust:Campus hust:Facility ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( hust:AcademicBuilding hust:LibraryBuilding hust:Dormitory hust:SportsBuilding hust:DiningBuilding hust:ServiceBuilding ) .
 
