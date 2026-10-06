@@ -1,0 +1,3228 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix hust: <https://samnn152.github.io/hust-ontology-tbox/#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcterms:description a owl:AnnotationProperty .
+
+dcterms:license a owl:AnnotationProperty .
+
+dcterms:source a owl:AnnotationProperty .
+
+dcterms:title a owl:AnnotationProperty .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .
+
+<http://www.w3.org/2003/01/geo/wgs84_pos#lat> a owl:DatatypeProperty .
+
+<http://www.w3.org/2003/01/geo/wgs84_pos#long> a owl:DatatypeProperty .
+
+skos:altLabel a owl:AnnotationProperty .
+
+skos:definition a owl:AnnotationProperty .
+
+skos:prefLabel a owl:AnnotationProperty .
+
+prov:wasDerivedFrom a owl:ObjectProperty .
+
+foaf:homepage a owl:ObjectProperty .
+
+<https://samnn152.github.io/hust-ontology-tbox/> a owl:Ontology ;
+    rdfs:label "HUST university ontology — public T-Box"@en,
+        "Ontology đại học HUST — T-Box công khai"@vi ;
+    dcterms:creator "samnn152 and project ontology contributors" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-10-06"^^xsd:date ;
+    rdfs:comment "Đang phát triển. Thông tin còn nhiều thiếu sót. Bản công khai chỉ chứa schema; không phải ấn phẩm chính thức của HUST."@vi .
+
+hust:AcademicMentor a owl:Class ;
+    rdfs:label "Academic mentor"@en,
+        "Mentor học thuật"@vi ;
+    rdfs:seeAlso <https://www.ox.ac.uk/students/welfare/wellbeing-at-oxford> ;
+    rdfs:subClassOf hust:Mentor ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://www.ox.ac.uk/students/welfare/wellbeing-at-oxford> ;
+    hust:roleFamily "Mentor" .
+
+hust:AccountsPayableAccountant a owl:Class ;
+    rdfs:label "Accounts payable accountant"@en,
+        "Kế toán thanh toán/công nợ"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-tai-chinh-ke-hoach.html> ;
+    rdfs:subClassOf hust:Accountant ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-tai-chinh-ke-hoach.html> ;
+    hust:roleFamily "Accountant" .
+
+hust:AdministrativeUnitDeputyHead a owl:Class ;
+    rdfs:label "Administrative unit deputy head"@en,
+        "Phó trưởng đơn vị hành chính"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-to-chuc-nhan-su.html> ;
+    rdfs:subClassOf hust:LeadershipManagement ;
+    hust:evidenceType "explicit-public-title-or-function" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-to-chuc-nhan-su.html> .
+
+hust:AdministrativeUnitHead a owl:Class ;
+    rdfs:label "Administrative unit head"@en,
+        "Trưởng đơn vị hành chính"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-to-chuc-nhan-su.html> ;
+    rdfs:subClassOf hust:LeadershipManagement ;
+    hust:evidenceType "explicit-public-title-or-function" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-to-chuc-nhan-su.html> .
+
+hust:Alumni a owl:Class ;
+    rdfs:label "Cựu người học"@vi ;
+    rdfs:subClassOf hust:Person ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( hust:Person [ a owl:Restriction ;
+                        owl:onProperty hust:hasUniversityRelation ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:unionOf ( hust:AlumniAffiliation ) ] ] ) ] .
+
+hust:AlumniLiaison a owl:Class ;
+    rdfs:label "Alumni liaison"@en,
+        "Ban liên lạc cựu sinh viên"@vi ;
+    rdfs:subClassOf hust:AlumniAffiliation ;
+    hust:reference <https://www.w3.org/TR/owl2-syntax/> .
+
+hust:AlumniNetworkCoordinator a owl:Class ;
+    rdfs:label "Alumni network coordinator"@en,
+        "Điều phối mạng lưới cựu sinh viên"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-hop-tac-doi-ngoai.html> ;
+    rdfs:subClassOf hust:ExternalRelationsPartnership ;
+    hust:evidenceType "explicit-function" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-hop-tac-doi-ngoai.html> ;
+    hust:roleFamily "ExternalRelationsPartnership" .
+
+hust:AssociateProfessor a owl:Class ;
+    rdfs:label "Người có học hàm phó giáo sư"@vi ;
+    rdfs:subClassOf hust:Person .
+
+hust:BachelorThesis a owl:Class ;
+    rdfs:label "Bachelor thesis"@en,
+        "Đồ án hoặc khóa luận cử nhân"@vi ;
+    rdfs:subClassOf hust:Thesis .
+
+hust:BookChapter a owl:Class ;
+    rdfs:label "Book chapter"@en,
+        "Chương sách"@vi ;
+    rdfs:subClassOf hust:Publication .
+
+hust:CenterDeputyDirector a owl:Class ;
+    rdfs:label "Deputy center director"@en,
+        "Phó giám đốc trung tâm"@vi ;
+    rdfs:seeAlso <https://smse.hust.edu.vn/vi/organs/> ;
+    rdfs:subClassOf hust:LeadershipManagement ;
+    owl:disjointWith hust:CenterDirector ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://smse.hust.edu.vn/vi/organs/> ;
+    hust:roleFamily "LeadershipManagement" .
+
+hust:CenterSpokesperson a owl:Class ;
+    rdfs:label "Center spokesperson"@en,
+        "Đầu mối phát ngôn của trung tâm"@vi ;
+    rdfs:seeAlso <https://library.hust.edu.vn/vi/node/56> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hust:roleRepresentsOrganization ;
+            owl:someValuesFrom hust:Organization ],
+        [ a owl:Restriction ;
+            owl:onProperty hust:roleContactPointFor ;
+            owl:someValuesFrom hust:Organization ],
+        hust:CommunicationsMedia,
+        hust:Spokesperson ;
+    hust:evidenceType "explicit-public-title-or-function" ;
+    hust:reference <https://library.hust.edu.vn/vi/node/56> .
+
+hust:ChiefAccountant a owl:Class ;
+    rdfs:label "Chief accountant"@en,
+        "Kế toán trưởng"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html> ;
+    rdfs:subClassOf hust:Accountant,
+        hust:LeadershipManagement ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html> ;
+    hust:roleFamily "Accountant" .
+
+hust:ConferencePaper a owl:Class ;
+    rdfs:label "Conference paper"@en,
+        "Bài báo hội nghị"@vi ;
+    rdfs:subClassOf hust:Publication .
+
+hust:CorporateLiaison a owl:Class ;
+    rdfs:label "Corporate liaison"@en,
+        "Đầu mối doanh nghiệp"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html>,
+        <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-hop-tac-doi-ngoai.html> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hust:roleLiaisesWithOrganization ;
+            owl:someValuesFrom hust:Organization ],
+        hust:ExternalRelationsPartnership,
+        hust:Liaison ;
+    hust:evidenceType "functional-inference" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html>,
+        <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-hop-tac-doi-ngoai.html> ;
+    hust:roleFamily "ExternalRelationsPartnership" .
+
+hust:CorporatePartnershipCoordinator a owl:Class ;
+    rdfs:label "Corporate partnership coordinator"@en,
+        "Điều phối hợp tác doanh nghiệp"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html>,
+        <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-hop-tac-doi-ngoai.html> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hust:roleCoordinatesPartnershipWith ;
+            owl:someValuesFrom hust:Organization ],
+        hust:ExternalRelationsPartnership ;
+    hust:evidenceType "explicit-function" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html>,
+        <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-hop-tac-doi-ngoai.html> ;
+    hust:roleFamily "ExternalRelationsPartnership" .
+
+hust:CourseCoordinator a owl:Class ;
+    rdfs:label "Course coordinator"@en,
+        "Điều phối học phần"@vi ;
+    rdfs:seeAlso <https://smse.hust.edu.vn/vi/organs/> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hust:roleForAcademicEntity ;
+            owl:someValuesFrom hust:AcademicEntity ],
+        hust:AcademicCoordination,
+        hust:AcademicSupport,
+        hust:Teaching ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://smse.hust.edu.vn/vi/organs/> ;
+    hust:roleFamily "AcademicSupport" .
+
+hust:Dataset a owl:Class ;
+    rdfs:label "Dataset"@en,
+        "Bộ dữ liệu"@vi ;
+    rdfs:subClassOf hust:DigitalResource,
+        hust:ResearchOutput .
+
+hust:Dean a owl:Class ;
+    rdfs:label "Dean"@en,
+        "Trưởng khoa"@vi ;
+    rdfs:seeAlso <https://smse.hust.edu.vn/vi/organs/> ;
+    rdfs:subClassOf hust:LeadershipManagement ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://smse.hust.edu.vn/vi/organs/> ;
+    hust:roleFamily "LeadershipManagement" .
+
+hust:DivisionHead a owl:Class ;
+    rdfs:label "Head of division / board"@en,
+        "Trưởng ban"@vi ;
+    rdfs:seeAlso <https://ts.hust.edu.vn/p/lien-he>,
+        <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html> ;
+    rdfs:subClassOf hust:LeadershipManagement ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://ts.hust.edu.vn/p/lien-he>,
+        <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html> ;
+    hust:roleFamily "LeadershipManagement" .
+
+hust:DoctoralStudent a owl:Class ;
+    rdfs:label "Nghiên cứu sinh"@vi ;
+    rdfs:subClassOf hust:PostgraduateStudent ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( hust:Person [ a owl:Restriction ;
+                        owl:onProperty hust:hasUniversityRelation ;
+                        owl:someValuesFrom hust:DoctoralStudentAffiliation ] ) ] .
+
+hust:DoctoralThesis a owl:Class ;
+    rdfs:label "Doctoral thesis"@en,
+        "Luận án tiến sĩ"@vi ;
+    rdfs:subClassOf hust:Thesis .
+
+hust:EventSeries a owl:Class ;
+    rdfs:label "Chuỗi sự kiện"@vi ;
+    rdfs:subClassOf hust:AcademicActivity .
+
+hust:ExcellentGraduateAward a owl:Class ;
+    rdfs:label "Khen thưởng tốt nghiệp xuất sắc"@vi ;
+    rdfs:subClassOf hust:Achievement ;
+    hust:reference <https://www.w3.org/TR/owl2-syntax/> .
+
+hust:ExcellentGraduationDistinction a owl:Class ;
+    rdfs:label "Tốt nghiệp hạng xuất sắc"@vi ;
+    rdfs:subClassOf hust:Achievement ;
+    hust:reference <https://www.w3.org/TR/owl2-syntax/> .
+
+hust:ExternalGuest a owl:Class ;
+    rdfs:label "External guest"@en,
+        "Khách mời bên ngoài"@vi ;
+    rdfs:subClassOf hust:Visitor ;
+    hust:reference <https://www.w3.org/TR/owl2-syntax/> .
+
+hust:ExternalPerson a owl:Class ;
+    rdfs:label "Người liên kết bên ngoài"@vi ;
+    rdfs:subClassOf hust:Person ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( hust:Person [ a owl:Restriction ;
+                        owl:onProperty hust:hasUniversityRelation ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:unionOf ( hust:CorporateBoardChair hust:ExternalAffiliation hust:ExternalPublicOfficial ) ] ] ) ] .
+
+hust:FiveGoodStudentRecognition a owl:Class ;
+    rdfs:label "Danh hiệu Sinh viên 5 tốt"@vi ;
+    rdfs:subClassOf hust:Achievement ;
+    hust:reference <https://www.w3.org/TR/owl2-syntax/> .
+
+hust:GeneralAccountant a owl:Class ;
+    rdfs:label "General accountant"@en,
+        "Kế toán tổng hợp"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html> ;
+    rdfs:subClassOf hust:Accountant ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html> ;
+    hust:roleFamily "Accountant" .
+
+hust:Graduate a owl:Class ;
+    rdfs:label "Graduate"@en,
+        "Người tốt nghiệp"@vi ;
+    rdfs:subClassOf hust:AlumniAffiliation ;
+    hust:reference <https://www.w3.org/TR/owl2-syntax/> .
+
+hust:InstituteDirector a owl:Class ;
+    rdfs:label "Institute director"@en,
+        "Viện trưởng"@vi ;
+    rdfs:seeAlso <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/hoi-dong-khoa-hoc-va-dao-tao.html> ;
+    rdfs:subClassOf hust:LeadershipManagement ;
+    hust:evidenceType "explicit-public-title-or-function" ;
+    hust:reference <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/hoi-dong-khoa-hoc-va-dao-tao.html> .
+
+hust:JournalArticle a owl:Class ;
+    rdfs:label "Journal article"@en,
+        "Bài báo tạp chí"@vi ;
+    rdfs:subClassOf hust:Publication .
+
+hust:LaboratoryRoom a owl:Class ;
+    rdfs:label "Laboratory Room"@en,
+        "Phòng thí nghiệm (căn phòng)"@vi ;
+    rdfs:subClassOf hust:Room .
+
+hust:LectureNote a owl:Class ;
+    rdfs:label "Lecture note"@en,
+        "Bài giảng"@vi ;
+    rdfs:subClassOf hust:LearningDocument .
+
+hust:Lecturer a owl:Class ;
+    rdfs:label "Giảng viên"@vi ;
+    rdfs:subClassOf hust:AcademicStaff ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( hust:Person [ a owl:Restriction ;
+                        owl:onProperty hust:hasUniversityRelation ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:unionOf ( hust:FacultyMember ) ] ] ) ] .
+
+hust:Master a owl:Class ;
+    rdfs:label "Người có bằng thạc sĩ"@vi ;
+    rdfs:subClassOf hust:DegreeHolder ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( hust:Person [ a owl:Restriction ;
+                        owl:hasValue hust:MasterDegree ;
+                        owl:onProperty hust:hasDegree ] ) ] .
+
+hust:MasterStudent a owl:Class ;
+    rdfs:label "Học viên cao học"@vi ;
+    rdfs:subClassOf hust:PostgraduateStudent ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( hust:Person [ a owl:Restriction ;
+                        owl:onProperty hust:hasUniversityRelation ;
+                        owl:someValuesFrom hust:MasterStudentAffiliation ] ) ] .
+
+hust:MasterThesis a owl:Class ;
+    rdfs:label "Master thesis"@en,
+        "Luận văn thạc sĩ"@vi ;
+    rdfs:subClassOf hust:Thesis .
+
+hust:OfficeRoom a owl:Class ;
+    rdfs:label "Office Room"@en,
+        "Phòng làm việc"@vi ;
+    rdfs:subClassOf hust:Room .
+
+hust:OlympiadAward a owl:Class ;
+    rdfs:label "Giải thưởng Olympic"@vi ;
+    rdfs:subClassOf hust:Achievement ;
+    hust:reference <https://www.w3.org/TR/owl2-syntax/> .
+
+hust:OlympiadTeamMember a owl:Class ;
+    rdfs:label "Olympiad team member"@en,
+        "Thành viên đội tuyển Olympic"@vi ;
+    rdfs:subClassOf hust:StudentAffiliation ;
+    hust:reference <https://www.w3.org/TR/owl2-syntax/> .
+
+hust:OutstandingStudentRecognition a owl:Class ;
+    rdfs:label "Sinh viên tiêu biểu"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/news/hoat-dong-chung/le-vinh-danh-sinh-vien-xuat-sac-nam-hoc-2024-2025-655722.html> ;
+    rdfs:subClassOf hust:Achievement ;
+    hust:reference <https://www.hust.edu.vn/vi/news/hoat-dong-chung/le-vinh-danh-sinh-vien-xuat-sac-nam-hoc-2024-2025-655722.html> .
+
+hust:Patent a owl:Class ;
+    rdfs:label "Patent"@en,
+        "Bằng sáng chế"@vi ;
+    rdfs:subClassOf hust:ResearchOutput .
+
+hust:PayrollAccountant a owl:Class ;
+    rdfs:label "Payroll accountant"@en,
+        "Kế toán lương"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-tai-chinh-ke-hoach.html> ;
+    rdfs:subClassOf hust:Accountant ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-tai-chinh-ke-hoach.html> ;
+    hust:roleFamily "Accountant" .
+
+hust:PhD a owl:Class ;
+    rdfs:label "Người có bằng tiến sĩ"@vi ;
+    rdfs:subClassOf hust:DegreeHolder ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( hust:Person [ a owl:Restriction ;
+                        owl:hasValue hust:PhDDegree ;
+                        owl:onProperty hust:hasDegree ] ) ] .
+
+hust:Policy a owl:Class ;
+    rdfs:label "Policy"@en,
+        "Chính sách"@vi ;
+    rdfs:subClassOf hust:Document .
+
+hust:PrincipalLecturer a owl:Class ;
+    rdfs:label "Principal / senior-most lecturer"@en,
+        "Giảng viên cao cấp"@vi ;
+    rdfs:seeAlso <https://smse.hust.edu.vn/vi/organs/> ;
+    rdfs:subClassOf hust:SeniorLecturer ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://smse.hust.edu.vn/vi/organs/> ;
+    hust:roleFamily "SeniorLecturer" .
+
+hust:Professor a owl:Class ;
+    rdfs:label "Người có học hàm giáo sư"@vi ;
+    rdfs:subClassOf hust:Person .
+
+hust:ProfessorAppointment a owl:Class ;
+    rdfs:label "Professor appointment"@en,
+        "Bổ nhiệm giáo sư"@vi ;
+    rdfs:seeAlso <https://med.stanford.edu/content/sm/academicaffairs/faa/oaa-welcome.html> ;
+    rdfs:subClassOf hust:FacultyMember ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://med.stanford.edu/content/sm/academicaffairs/faa/oaa-welcome.html> ;
+    hust:roleFamily "FacultyMember" ;
+    hust:scopeNote "Represents an appointment role. Academic rank/title can additionally be modeled separately from Role."@en .
+
+hust:PublicNewsArticle a owl:Class ;
+    rdfs:label "Bài thông tin công khai"@vi ;
+    rdfs:subClassOf hust:InformationResource .
+
+hust:PurchasingOfficer a owl:Class ;
+    rdfs:label "Purchasing officer"@en,
+        "Chuyên viên mua sắm"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html> ;
+    rdfs:subClassOf hust:ProcurementSpecialist ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html> ;
+    hust:roleFamily "ProcurementSpecialist" .
+
+hust:RectorPresident a owl:Class ;
+    rdfs:label "Rector / school president"@en,
+        "Hiệu trưởng"@vi ;
+    rdfs:seeAlso <https://smse.hust.edu.vn/vi/organs/>,
+        <https://soict.hust.edu.vn/dang-uy-truong.html> ;
+    rdfs:subClassOf hust:LeadershipManagement ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://smse.hust.edu.vn/vi/organs/>,
+        <https://soict.hust.edu.vn/dang-uy-truong.html> ;
+    hust:roleFamily "LeadershipManagement" .
+
+hust:Regulation a owl:Class ;
+    rdfs:label "Regulation"@en,
+        "Quy định"@vi ;
+    rdfs:subClassOf hust:Document .
+
+hust:Report a owl:Class ;
+    rdfs:label "Report"@en,
+        "Báo cáo"@vi ;
+    rdfs:subClassOf hust:Document .
+
+hust:ResearchGroupLeader a owl:Class ;
+    rdfs:label "Research group leader"@en,
+        "Trưởng nhóm nghiên cứu"@vi ;
+    rdfs:seeAlso <https://smse.hust.edu.vn/vi/organs/> ;
+    rdfs:subClassOf hust:LeadershipManagement,
+        hust:ResearchLeadership ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://smse.hust.edu.vn/vi/organs/> ;
+    hust:relatedRoleCategory hust:Research ;
+    hust:roleFamily "LeadershipManagement" .
+
+hust:ResearchLaboratoryHead a owl:Class ;
+    rdfs:label "Research laboratory head"@en,
+        "Trưởng phòng thí nghiệm nghiên cứu"@vi ;
+    rdfs:seeAlso <https://research.hust.edu.vn/> ;
+    rdfs:subClassOf hust:ResearchLeadership ;
+    hust:reference <https://research.hust.edu.vn/> ;
+    hust:relatedRoleCategory hust:ResearchLaboratoryMember .
+
+hust:Researcher a owl:Class ;
+    rdfs:label "Nhà nghiên cứu"@vi ;
+    rdfs:subClassOf hust:AcademicStaff ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( hust:Person [ a owl:Restriction ;
+                        owl:onProperty hust:hasUniversityRelation ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:unionOf ( hust:ResearchLaboratoryMember hust:ResearchLeadership hust:Research hust:ResearcherTitle hust:VisitingStudentResearcher ) ] ] ) ] .
+
+hust:ScholarshipAward a owl:Class ;
+    rdfs:label "Học bổng được trao"@vi ;
+    rdfs:subClassOf hust:Achievement ;
+    hust:reference <https://www.w3.org/TR/owl2-syntax/> .
+
+hust:ScientificTrainingCouncilChair a owl:Class ;
+    rdfs:label "Scientific and Training Council chair"@en,
+        "Chủ tịch Hội đồng Khoa học và Đào tạo"@vi ;
+    rdfs:seeAlso <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/hoi-dong-khoa-hoc-va-dao-tao.html> ;
+    rdfs:subClassOf hust:CommitteeChair ;
+    hust:evidenceType "explicit-public-title-or-function" ;
+    hust:reference <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/hoi-dong-khoa-hoc-va-dao-tao.html> .
+
+hust:ScientificTrainingCouncilMember a owl:Class ;
+    rdfs:label "Scientific and Training Council member"@en,
+        "Ủy viên Hội đồng Khoa học và Đào tạo"@vi ;
+    rdfs:seeAlso <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/hoi-dong-khoa-hoc-va-dao-tao.html> ;
+    rdfs:subClassOf hust:CommitteeMember ;
+    hust:evidenceType "explicit-public-title-or-function" ;
+    hust:reference <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/hoi-dong-khoa-hoc-va-dao-tao.html> .
+
+hust:ScientificTrainingCouncilSecretary a owl:Class ;
+    rdfs:label "Scientific and Training Council secretary"@en,
+        "Ủy viên thư ký Hội đồng Khoa học và Đào tạo"@vi ;
+    rdfs:seeAlso <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/hoi-dong-khoa-hoc-va-dao-tao.html> ;
+    rdfs:subClassOf hust:CommitteeSecretary ;
+    hust:evidenceType "explicit-public-title-or-function" ;
+    hust:reference <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/hoi-dong-khoa-hoc-va-dao-tao.html> .
+
+hust:ScientificTrainingCouncilStandingMember a owl:Class ;
+    rdfs:label "Scientific and Training Council standing member"@en,
+        "Ủy viên thường trực Hội đồng Khoa học và Đào tạo"@vi ;
+    rdfs:seeAlso <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/hoi-dong-khoa-hoc-va-dao-tao.html> ;
+    rdfs:subClassOf hust:CommitteeMember ;
+    hust:evidenceType "explicit-public-title-or-function" ;
+    hust:reference <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/hoi-dong-khoa-hoc-va-dao-tao.html> .
+
+hust:ScientificTrainingCouncilViceChair a owl:Class ;
+    rdfs:label "Scientific and Training Council vice chair"@en,
+        "Phó Chủ tịch Hội đồng Khoa học và Đào tạo"@vi ;
+    rdfs:seeAlso <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/hoi-dong-khoa-hoc-va-dao-tao.html> ;
+    rdfs:subClassOf hust:CommitteeViceChair ;
+    hust:evidenceType "explicit-public-title-or-function" ;
+    hust:reference <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/hoi-dong-khoa-hoc-va-dao-tao.html> .
+
+hust:Secretary a owl:Class ;
+    rdfs:label "Secretary"@en,
+        "Thư ký"@vi ;
+    rdfs:seeAlso <https://soict.hust.edu.vn/dang-uy-truong.html> ;
+    rdfs:subClassOf hust:AdministrativeProfessional ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://soict.hust.edu.vn/dang-uy-truong.html> ;
+    hust:roleFamily "AdministrativeProfessional" .
+
+hust:Slide a owl:Class ;
+    rdfs:label "Slide"@en,
+        "Trang trình chiếu"@vi ;
+    rdfs:subClassOf hust:LearningDocument .
+
+hust:Software a owl:Class ;
+    rdfs:label "Software"@en,
+        "Phần mềm"@vi ;
+    rdfs:subClassOf hust:DigitalResource,
+        hust:ResearchOutput .
+
+hust:Specialist a owl:Class ;
+    rdfs:label "Specialist"@en,
+        "Chuyên viên"@vi ;
+    rdfs:seeAlso <https://smse.hust.edu.vn/vi/organs/>,
+        <https://ts.hust.edu.vn/p/lien-he> ;
+    rdfs:subClassOf hust:AdministrativeProfessional ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://smse.hust.edu.vn/vi/organs/>,
+        <https://ts.hust.edu.vn/p/lien-he> ;
+    hust:roleFamily "AdministrativeProfessional" .
+
+hust:StudentAssociationPresident a owl:Class ;
+    rdfs:label "Student Association president"@en,
+        "Chủ tịch Hội Sinh viên"@vi ;
+    rdfs:seeAlso <https://svbk.hust.edu.vn/vi/about/ban-chap-hanh-hoi-sinh-vien-dai-hoc-207321.html> ;
+    rdfs:subClassOf hust:GovernanceRepresentation ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://svbk.hust.edu.vn/vi/about/ban-chap-hanh-hoi-sinh-vien-dai-hoc-207321.html> ;
+    hust:relatedRoleCategory hust:StudentOrganization ;
+    hust:roleFamily "GovernanceRepresentation" .
+
+hust:StudentAssociationVicePresident a owl:Class ;
+    rdfs:label "Student Association vice president"@en,
+        "Phó Chủ tịch Hội Sinh viên"@vi ;
+    rdfs:seeAlso <https://svbk.hust.edu.vn/vi/about/ban-chap-hanh-hoi-sinh-vien-dai-hoc-207321.html> ;
+    rdfs:subClassOf hust:GovernanceRepresentation ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://svbk.hust.edu.vn/vi/about/ban-chap-hanh-hoi-sinh-vien-dai-hoc-207321.html> ;
+    hust:relatedRoleCategory hust:StudentOrganization ;
+    hust:roleFamily "GovernanceRepresentation" .
+
+hust:StudentExchangeCoordinator a owl:Class ;
+    rdfs:label "Student exchange coordinator"@en,
+        "Điều phối trao đổi sinh viên"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-hop-tac-doi-ngoai.html> ;
+    rdfs:subClassOf hust:ExternalRelationsPartnership ;
+    hust:evidenceType "explicit-function" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-hop-tac-doi-ngoai.html> ;
+    hust:roleFamily "ExternalRelationsPartnership" .
+
+hust:StudentRepresentative a owl:Class ;
+    rdfs:label "Student representative"@en,
+        "Đại diện sinh viên"@vi ;
+    rdfs:seeAlso <https://svbk.hust.edu.vn/vi/about/ban-chap-hanh-hoi-sinh-vien-dai-hoc-207321.html> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hust:roleRepresentsOrganization ;
+            owl:someValuesFrom hust:Organization ],
+        hust:Representation ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://svbk.hust.edu.vn/vi/about/ban-chap-hanh-hoi-sinh-vien-dai-hoc-207321.html> ;
+    hust:relatedRoleCategory hust:GovernanceRepresentation,
+        hust:StudentOrganization ;
+    hust:roleFamily "GovernanceRepresentation" .
+
+hust:StudentSupportOfficer a owl:Class ;
+    rdfs:label "Student support officer"@en,
+        "Cán bộ hỗ trợ sinh viên"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/sinh-vien/> ;
+    rdfs:subClassOf hust:AdministrativeProfessional ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://www.hust.edu.vn/vi/sinh-vien/> ;
+    hust:relatedRoleCategory hust:WelfareHealth ;
+    hust:roleFamily "AdministrativeProfessional" .
+
+hust:Syllabus a owl:Class ;
+    rdfs:label "Syllabus"@en,
+        "Đề cương môn học"@vi ;
+    rdfs:subClassOf hust:LearningDocument .
+
+hust:TalentAdmissionStudent a owl:Class ;
+    rdfs:label "Talent-admission admitted student"@en,
+        "Thí sinh trúng tuyển xét tuyển tài năng"@vi ;
+    rdfs:subClassOf hust:StudentAffiliation ;
+    hust:reference <https://e.hust.edu.vn/students/honor/dai-hoc-bach-khoa-ha-noi-vinh-danh-cac-thi-sinh-xuat-sac-trung-tuyen-post-G7jlaqG9Njull944E1z3> .
+
+hust:TalentAdmissionsOfficer a owl:Class ;
+    rdfs:label "Talent admissions officer"@en,
+        "Chuyên viên xét tuyển tài năng"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/phong-tuyen-sinh-358991.html> ;
+    rdfs:subClassOf hust:AdmissionsOfficer ;
+    hust:evidenceType "explicit-function" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/phong-tuyen-sinh-358991.html> ;
+    hust:roleFamily "AdmissionsOfficer" .
+
+hust:TeachingAssistantStaff a owl:Class ;
+    rdfs:label "Nhân sự trợ giảng"@vi ;
+    rdfs:subClassOf hust:Person ;
+    owl:equivalentClass [ owl:intersectionOf ( hust:Person [ a owl:Restriction ;
+                        owl:onProperty hust:hasRole ;
+                        owl:someValuesFrom hust:TeachingAssistant ] ) ] .
+
+hust:Textbook a owl:Class ;
+    rdfs:label "Textbook"@en,
+        "Giáo trình"@vi ;
+    rdfs:subClassOf hust:LearningDocument .
+
+hust:TraineeLecturer a owl:Class ;
+    rdfs:label "Giảng viên tạo nguồn"@vi ;
+    rdfs:subClassOf hust:Person ;
+    owl:equivalentClass [ owl:intersectionOf ( hust:Person [ a owl:Restriction ;
+                        owl:onProperty hust:hasRole ;
+                        owl:someValuesFrom hust:TraineeLecturerTitle ] ) ] .
+
+hust:UndergraduateStudent a owl:Class ;
+    rdfs:label "Sinh viên đại học"@vi ;
+    rdfs:subClassOf hust:Student ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( hust:Person [ a owl:Restriction ;
+                        owl:onProperty hust:hasUniversityRelation ;
+                        owl:someValuesFrom hust:UndergraduateStudentAffiliation ] ) ] .
+
+hust:UniversityDeputyDirector a owl:Class ;
+    rdfs:label "University deputy director"@en,
+        "Phó giám đốc đại học"@vi ;
+    rdfs:seeAlso <https://smse.hust.edu.vn/vi/organs/> ;
+    rdfs:subClassOf hust:LeadershipManagement ;
+    owl:disjointWith hust:UniversityDirector ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://smse.hust.edu.vn/vi/organs/> ;
+    hust:roleFamily "LeadershipManagement" .
+
+hust:UniversityOfficeChief a owl:Class ;
+    rdfs:label "University office chief"@en,
+        "Chánh Văn phòng đại học"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/van-phong-dai-hoc.html> ;
+    rdfs:subClassOf hust:LeadershipManagement ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/van-phong-dai-hoc.html> ;
+    hust:roleFamily "LeadershipManagement" .
+
+hust:UniversityOfficeDeputyChief a owl:Class ;
+    rdfs:label "University office deputy chief"@en,
+        "Phó Chánh Văn phòng đại học"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/van-phong-dai-hoc.html> ;
+    rdfs:subClassOf hust:LeadershipManagement ;
+    hust:evidenceType "functional-inference" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/van-phong-dai-hoc.html> ;
+    hust:roleFamily "LeadershipManagement" .
+
+hust:ValedictorianDistinction a owl:Class ;
+    rdfs:label "Danh hiệu thủ khoa"@vi ;
+    rdfs:subClassOf hust:Achievement ;
+    hust:reference <https://www.w3.org/TR/owl2-syntax/> .
+
+hust:ViceSchoolPrincipal a owl:Class ;
+    rdfs:label "Vice principal / deputy school head"@en,
+        "Phó Hiệu trưởng trường thuộc đại học"@vi ;
+    rdfs:seeAlso <https://research.hust.edu.vn/> ;
+    rdfs:subClassOf hust:LeadershipManagement ;
+    hust:reference <https://research.hust.edu.vn/> .
+
+hust:YouthUnionDeputySecretary a owl:Class ;
+    rdfs:label "Youth Union deputy secretary"@en,
+        "Phó Bí thư Đoàn"@vi ;
+    rdfs:seeAlso <https://scls.hust.edu.vn/vi/sinh-vien/to-chuc-doan-hoi/ban-chap-hanh-dtn-truong-hoa-va-khss-nhiem-ky-2025-2026-54.html> ;
+    rdfs:subClassOf hust:GovernanceRepresentation ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://scls.hust.edu.vn/vi/sinh-vien/to-chuc-doan-hoi/ban-chap-hanh-dtn-truong-hoa-va-khss-nhiem-ky-2025-2026-54.html> ;
+    hust:relatedRoleCategory hust:StudentOrganization ;
+    hust:roleFamily "GovernanceRepresentation" .
+
+hust:YouthUnionOfficer a owl:Class ;
+    rdfs:label "Youth Union officer"@en,
+        "Cán bộ Đoàn Thanh niên"@vi ;
+    rdfs:subClassOf hust:Role ;
+    hust:reference <https://www.w3.org/TR/owl2-syntax/> ;
+    hust:relatedRoleCategory hust:StudentOrganization .
+
+hust:YouthUnionSecretary a owl:Class ;
+    rdfs:label "Youth Union secretary"@en,
+        "Bí thư Đoàn / Bí thư Chi đoàn"@vi ;
+    rdfs:seeAlso <https://scls.hust.edu.vn/vi/sinh-vien/to-chuc-doan-hoi/ban-chap-hanh-dtn-truong-hoa-va-khss-nhiem-ky-2025-2026-54.html>,
+        <https://www.hust.edu.vn/vi/news/hoat-dong-chung/chang-sinh-vien-nang-dong-giua-tri-thuc-va-phong-trao-doan-hoi-655571.html> ;
+    rdfs:subClassOf hust:GovernanceRepresentation ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://scls.hust.edu.vn/vi/sinh-vien/to-chuc-doan-hoi/ban-chap-hanh-dtn-truong-hoa-va-khss-nhiem-ky-2025-2026-54.html>,
+        <https://www.hust.edu.vn/vi/news/hoat-dong-chung/chang-sinh-vien-nang-dong-giua-tri-thuc-va-phong-trao-doan-hoi-655571.html> ;
+    hust:relatedRoleCategory hust:StudentOrganization ;
+    hust:roleFamily "GovernanceRepresentation" .
+
+hust:academicFieldLiteral a owl:DatatypeProperty ;
+    rdfs:label "academic field"@en ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:unionOf ( xsd:string rdf:langString ) ] .
+
+hust:academic_AcademicBuilding a owl:Class ;
+    rdfs:subClassOf hust:academic_Building .
+
+hust:academic_AdministrativeOffice a owl:Class ;
+    rdfs:subClassOf hust:academic_Organization .
+
+hust:academic_AdministrativeStaff a owl:Class ;
+    rdfs:subClassOf hust:academic_Person .
+
+hust:academic_AdvisorRole a owl:Class ;
+    rdfs:subClassOf hust:academic_Role .
+
+hust:academic_Alumni a owl:Class ;
+    rdfs:subClassOf hust:academic_Person .
+
+hust:academic_BachelorDegree a owl:Class ;
+    rdfs:subClassOf hust:academic_Degree .
+
+hust:academic_Book a owl:Class ;
+    rdfs:subClassOf hust:academic_Publication .
+
+hust:academic_Campus a owl:Class ;
+    rdfs:subClassOf hust:academic_Place .
+
+hust:academic_Classroom a owl:Class ;
+    rdfs:subClassOf hust:academic_Room .
+
+hust:academic_CommitteeMemberRole a owl:Class ;
+    rdfs:subClassOf hust:academic_Role .
+
+hust:academic_ConferencePaper a owl:Class ;
+    rdfs:subClassOf hust:academic_Publication .
+
+hust:academic_CoreCourse a owl:Class ;
+    rdfs:subClassOf hust:academic_Course .
+
+hust:academic_Department a owl:Class ;
+    rdfs:subClassOf hust:academic_Organization .
+
+hust:academic_DoctoralDegree a owl:Class ;
+    rdfs:subClassOf hust:academic_Degree .
+
+hust:academic_ElectiveCourse a owl:Class ;
+    rdfs:subClassOf hust:academic_Course .
+
+hust:academic_EngineeringMajor a owl:Class ;
+    rdfs:subClassOf hust:academic_Major .
+
+hust:academic_ExchangeProgram a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicProgram .
+
+hust:academic_Faculty a owl:Class ;
+    rdfs:subClassOf hust:academic_Organization .
+
+hust:academic_FallSemester a owl:Class ;
+    rdfs:subClassOf hust:academic_Semester .
+
+hust:academic_FinalExam a owl:Class ;
+    rdfs:subClassOf hust:academic_Exam .
+
+hust:academic_FinalPeriod a owl:Class ;
+    rdfs:subClassOf hust:academic_ExamPeriod .
+
+hust:academic_GeneralCourse a owl:Class ;
+    rdfs:subClassOf hust:academic_Course .
+
+hust:academic_GuestLecture a owl:Class ;
+    rdfs:subClassOf hust:academic_Seminar .
+
+hust:academic_Hackathon a owl:Class ;
+    rdfs:subClassOf hust:academic_Workshop .
+
+hust:academic_Hall a owl:Class ;
+    rdfs:subClassOf hust:academic_Place .
+
+hust:academic_HolidayPeriod a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicPeriod .
+
+hust:academic_JournalArticle a owl:Class ;
+    rdfs:subClassOf hust:academic_Publication .
+
+hust:academic_LabCourse a owl:Class ;
+    rdfs:subClassOf hust:academic_Course .
+
+hust:academic_LabOffering a owl:Class ;
+    rdfs:subClassOf hust:academic_CourseOffering .
+
+hust:academic_Laboratory a owl:Class ;
+    rdfs:subClassOf hust:academic_Organization .
+
+hust:academic_LaboratoryBuilding a owl:Class ;
+    rdfs:subClassOf hust:academic_Building .
+
+hust:academic_LaboratoryRoom a owl:Class ;
+    rdfs:subClassOf hust:academic_Room .
+
+hust:academic_LectureOffering a owl:Class ;
+    rdfs:subClassOf hust:academic_CourseOffering .
+
+hust:academic_Lecturer a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicStaff .
+
+hust:academic_LecturerRole a owl:Class ;
+    rdfs:subClassOf hust:academic_Role .
+
+hust:academic_Library a owl:Class ;
+    rdfs:subClassOf hust:academic_Organization .
+
+hust:academic_LibraryBuilding a owl:Class ;
+    rdfs:subClassOf hust:academic_Building .
+
+hust:academic_MasterDegree a owl:Class ;
+    rdfs:subClassOf hust:academic_Degree .
+
+hust:academic_MasterProgram a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicProgram .
+
+hust:academic_MasterStudent a owl:Class ;
+    rdfs:subClassOf hust:academic_Student .
+
+hust:academic_MasterThesis a owl:Class ;
+    rdfs:subClassOf hust:academic_Thesis .
+
+hust:academic_MeetingRoom a owl:Class ;
+    rdfs:subClassOf hust:academic_Room .
+
+hust:academic_MidtermExam a owl:Class ;
+    rdfs:subClassOf hust:academic_Exam .
+
+hust:academic_MidtermPeriod a owl:Class ;
+    rdfs:subClassOf hust:academic_ExamPeriod .
+
+hust:academic_Office a owl:Class ;
+    rdfs:subClassOf hust:academic_Room .
+
+hust:academic_OnlineOffering a owl:Class ;
+    rdfs:subClassOf hust:academic_CourseOffering .
+
+hust:academic_OralExam a owl:Class ;
+    rdfs:subClassOf hust:academic_Exam .
+
+hust:academic_PhDProgram a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicProgram .
+
+hust:academic_PhDStudent a owl:Class ;
+    rdfs:subClassOf hust:academic_Student .
+
+hust:academic_PhDThesis a owl:Class ;
+    rdfs:subClassOf hust:academic_Thesis .
+
+hust:academic_Professor a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicStaff .
+
+hust:academic_ProjectCourse a owl:Class ;
+    rdfs:subClassOf hust:academic_Course .
+
+hust:academic_Quiz a owl:Class ;
+    rdfs:subClassOf hust:academic_Exam .
+
+hust:academic_RegistrationPeriod a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicPeriod .
+
+hust:academic_ResearchCenter a owl:Class ;
+    rdfs:subClassOf hust:academic_Organization .
+
+hust:academic_ResearchGroup a owl:Class ;
+    rdfs:subClassOf hust:academic_Research .
+
+hust:academic_ResearchSeminar a owl:Class ;
+    rdfs:subClassOf hust:academic_Seminar .
+
+hust:academic_Researcher a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicStaff .
+
+hust:academic_ResearcherRole a owl:Class ;
+    rdfs:subClassOf hust:academic_Role .
+
+hust:academic_ScienceMajor a owl:Class ;
+    rdfs:subClassOf hust:academic_Major .
+
+hust:academic_SpringSemester a owl:Class ;
+    rdfs:subClassOf hust:academic_Semester .
+
+hust:academic_StaffRole a owl:Class ;
+    rdfs:subClassOf hust:academic_Role .
+
+hust:academic_StudentRole a owl:Class ;
+    rdfs:subClassOf hust:academic_Role .
+
+hust:academic_SummerSemester a owl:Class ;
+    rdfs:subClassOf hust:academic_Semester .
+
+hust:academic_TeachingAssistant a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicStaff .
+
+hust:academic_TeachingAssistantRole a owl:Class ;
+    rdfs:subClassOf hust:academic_Role .
+
+hust:academic_ThesisDefense a owl:Class ;
+    rdfs:subClassOf hust:academic_Seminar .
+
+hust:academic_TrainingWorkshop a owl:Class ;
+    rdfs:subClassOf hust:academic_Workshop .
+
+hust:academic_TutorialOffering a owl:Class ;
+    rdfs:subClassOf hust:academic_CourseOffering .
+
+hust:academic_UndergraduateProgram a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicProgram .
+
+hust:academic_UndergraduateStudent a owl:Class ;
+    rdfs:subClassOf hust:academic_Student .
+
+hust:academic_University a owl:Class ;
+    rdfs:subClassOf hust:academic_Organization .
+
+hust:academic_advises a owl:ObjectProperty ;
+    rdfs:domain hust:academic_AcademicStaff ;
+    rdfs:range hust:academic_Student .
+
+hust:academic_belongsToField a owl:ObjectProperty ;
+    rdfs:range hust:academic_Major .
+
+hust:academic_belongsToProgram a owl:ObjectProperty ;
+    rdfs:range hust:academic_AcademicProgram .
+
+hust:academic_budget a owl:DatatypeProperty ;
+    rdfs:range xsd:float .
+
+hust:academic_capacity a owl:DatatypeProperty ;
+    rdfs:range xsd:int .
+
+hust:academic_credits a owl:DatatypeProperty ;
+    rdfs:range xsd:int .
+
+hust:academic_description a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+hust:academic_doi a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+hust:academic_duration a owl:DatatypeProperty ;
+    rdfs:range xsd:int .
+
+hust:academic_email a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+hust:academic_employeeId a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+hust:academic_endDate a owl:DatatypeProperty ;
+    rdfs:range xsd:date .
+
+hust:academic_enrolledIn a owl:ObjectProperty ;
+    rdfs:domain hust:academic_Student ;
+    rdfs:range hust:academic_AcademicProgram .
+
+hust:academic_follows a owl:ObjectProperty ;
+    owl:inverseOf hust:academic_precedes .
+
+hust:academic_fullName a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+hust:academic_gradeValue a owl:DatatypeProperty ;
+    rdfs:range xsd:float .
+
+hust:academic_hasAcademicYear a owl:ObjectProperty ;
+    rdfs:range hust:academic_AcademicYear .
+
+hust:academic_hasActivity a owl:ObjectProperty ;
+    owl:inverseOf hust:academic_isActivityOf .
+
+hust:academic_hasActivityIn a owl:ObjectProperty ;
+    owl:inverseOf hust:academic_occursIn .
+
+hust:academic_hasAuthor a owl:ObjectProperty ;
+    rdfs:range hust:academic_Person .
+
+hust:academic_hasCode a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+hust:academic_hasExaminer a owl:ObjectProperty ;
+    rdfs:range hust:academic_Person .
+
+hust:academic_hasInstructor a owl:ObjectProperty ;
+    rdfs:range hust:academic_Person .
+
+hust:academic_hasLocation a owl:ObjectProperty ;
+    rdfs:range hust:academic_Place .
+
+hust:academic_hasOrganizer a owl:ObjectProperty ;
+    rdfs:range hust:academic_Organization .
+
+hust:academic_hasPart a owl:ObjectProperty ;
+    owl:inverseOf hust:academic_partOf .
+
+hust:academic_hasParticipant a owl:ObjectProperty ;
+    rdfs:range hust:academic_Person .
+
+hust:academic_hasPrerequisite a owl:ObjectProperty ;
+    rdfs:domain hust:academic_Course ;
+    rdfs:range hust:academic_Course .
+
+hust:academic_hasStudent a owl:ObjectProperty ;
+    rdfs:range hust:academic_Person .
+
+hust:academic_isOfferedBy a owl:ObjectProperty ;
+    rdfs:range hust:academic_Organization .
+
+hust:academic_isPartOfProject a owl:ObjectProperty ;
+    rdfs:range hust:academic_ResearchProject .
+
+hust:academic_leads a owl:ObjectProperty ;
+    rdfs:domain hust:academic_AcademicStaff ;
+    rdfs:range hust:academic_ResearchProject .
+
+hust:academic_leadsToDegree a owl:ObjectProperty ;
+    rdfs:range hust:academic_Degree .
+
+hust:academic_level a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+hust:academic_locatedIn a owl:ObjectProperty ;
+    rdfs:range hust:academic_Place .
+
+hust:academic_memberOf a owl:ObjectProperty ;
+    rdfs:range hust:academic_Organization .
+
+hust:academic_playsRole a owl:ObjectProperty ;
+    rdfs:domain hust:academic_Person ;
+    rdfs:range hust:academic_Role ;
+    owl:inverseOf hust:academic_roleOf .
+
+hust:academic_publicationYear a owl:DatatypeProperty ;
+    rdfs:range xsd:int .
+
+hust:academic_roomNumber a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+hust:academic_startDate a owl:DatatypeProperty ;
+    rdfs:range xsd:date .
+
+hust:academic_studentId a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+hust:academic_supervises a owl:ObjectProperty ;
+    rdfs:domain hust:academic_AcademicStaff ;
+    rdfs:range hust:academic_Student .
+
+hust:academic_teaches a owl:ObjectProperty ;
+    rdfs:domain hust:academic_AcademicStaff ;
+    rdfs:range hust:academic_Course .
+
+hust:academic_title a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+hust:academic_worksFor a owl:ObjectProperty ;
+    rdfs:range hust:academic_Organization .
+
+hust:accessURL a owl:DatatypeProperty ;
+    rdfs:label "access URL"@en,
+        "URL truy cập"@vi ;
+    rdfs:domain hust:DigitalResource ;
+    rdfs:range xsd:anyURI .
+
+hust:achievementAtOrganization a owl:ObjectProperty ;
+    rdfs:label "đơn vị ghi nhận thành tích"@vi ;
+    rdfs:domain hust:Achievement ;
+    rdfs:range hust:Organization .
+
+hust:achievementDescription a owl:DatatypeProperty ;
+    rdfs:domain hust:Achievement .
+
+hust:achievementEndDate a owl:DatatypeProperty ;
+    rdfs:domain hust:Achievement ;
+    rdfs:range xsd:date .
+
+hust:achievementStartDate a owl:DatatypeProperty ;
+    rdfs:domain hust:Achievement ;
+    rdfs:range xsd:date .
+
+hust:admissionCode a owl:DatatypeProperty ;
+    rdfs:label "Mã xét tuyển"@vi ;
+    rdfs:domain hust:AdmissionOffering ;
+    rdfs:range xsd:string .
+
+hust:admissionProgram a owl:ObjectProperty ;
+    rdfs:label "Chương trình tuyển sinh"@vi ;
+    rdfs:domain hust:AdmissionOffering ;
+    rdfs:range hust:academic_AcademicProgram .
+
+hust:admissionSubjectCombination a owl:DatatypeProperty ;
+    rdfs:label "Tổ hợp xét tuyển"@vi ;
+    rdfs:domain hust:AdmissionOffering ;
+    rdfs:range xsd:string .
+
+hust:admissionYear a owl:DatatypeProperty ;
+    rdfs:label "Năm tuyển sinh"@vi ;
+    rdfs:domain hust:AdmissionOffering ;
+    rdfs:range xsd:gYear .
+
+hust:affiliatedWith a owl:ObjectProperty ;
+    rdfs:label "affiliated with"@en,
+        "có liên kết với"@vi ;
+    rdfs:domain hust:Person ;
+    rdfs:range hust:Organization ;
+    owl:propertyChainAxiom ( hust:hasRole hust:roleAtOrganization ) ;
+    hust:reference <https://www.w3.org/TR/vocab-org/> .
+
+hust:affiliationDescription a owl:DatatypeProperty ;
+    rdfs:label "Tư cách theo nguồn"@vi ;
+    rdfs:domain hust:Affiliation ;
+    rdfs:range xsd:string .
+
+hust:announcedEventEndDate a owl:DatatypeProperty ;
+    rdfs:label "Ngày kết thúc sự kiện theo nguồn công khai"@vi ;
+    rdfs:comment "Ngày được công bố trong nguồn; không chứng nhận sự kiện đã diễn ra."@vi ;
+    rdfs:domain hust:Event ;
+    rdfs:range xsd:date .
+
+hust:announcedEventOrganizer a owl:ObjectProperty ;
+    rdfs:label "Đơn vị tổ chức sự kiện theo thông báo"@vi ;
+    rdfs:domain hust:Event ;
+    rdfs:range hust:Organization .
+
+hust:announcedEventStartDate a owl:DatatypeProperty ;
+    rdfs:label "Ngày bắt đầu sự kiện theo nguồn công khai"@vi ;
+    rdfs:comment "Ngày được công bố trong nguồn; không chứng nhận sự kiện đã diễn ra."@vi ;
+    rdfs:domain hust:Event ;
+    rdfs:range xsd:date .
+
+hust:announcedEventVenue a owl:ObjectProperty ;
+    rdfs:label "Địa điểm sự kiện theo thông báo"@vi ;
+    rdfs:domain hust:Event ;
+    rdfs:range hust:Place .
+
+hust:appliesFromAcademicTerm a owl:DatatypeProperty ;
+    rdfs:label "Áp dụng từ học kỳ"@vi ;
+    rdfs:domain hust:academic_Curriculum ;
+    rdfs:range xsd:string .
+
+hust:appliesFromCohort a owl:DatatypeProperty ;
+    rdfs:label "Áp dụng từ khóa"@vi ;
+    rdfs:domain hust:academic_Curriculum ;
+    rdfs:range xsd:positiveInteger .
+
+hust:areaHectare a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "area (ha)"@en,
+        "diện tích (ha)"@vi ;
+    rdfs:domain hust:Campus ;
+    rdfs:range xsd:decimal .
+
+hust:authorsAsPublished a owl:DatatypeProperty ;
+    rdfs:label "Tác giả nguyên văn trong nguồn"@vi ;
+    rdfs:range xsd:string .
+
+hust:avatar a owl:DatatypeProperty ;
+    rdfs:label "avatar"@en,
+        "Ảnh đại diện"@vi ;
+    rdfs:comment "URL ảnh đại diện công khai của người, truy cập không cần đăng nhập. Tùy chọn; chỉ ghi nhận ảnh và đường dẫn đã được xác minh từ nguồn công khai."@vi ;
+    rdfs:domain hust:Person ;
+    rdfs:range xsd:anyURI .
+
+hust:awardLiteral a owl:DatatypeProperty ;
+    rdfs:label "award / recognition"@en ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:unionOf ( xsd:string rdf:langString ) ] .
+
+hust:buildingCode a owl:DatatypeProperty ;
+    rdfs:label "building code"@en,
+        "mã toà nhà"@vi ;
+    rdfs:domain hust:Building ;
+    rdfs:range xsd:string .
+
+hust:claimObject a owl:AnnotationProperty ;
+    rdfs:label "Giá trị được nguồn xác nhận"@vi .
+
+hust:claimPredicate a owl:AnnotationProperty ;
+    rdfs:label "Thuộc tính được nguồn xác nhận"@vi .
+
+hust:claimValidationStatus a owl:AnnotationProperty ;
+    rdfs:label "Trạng thái xác minh dữ kiện"@vi .
+
+hust:cohortLiteral a owl:DatatypeProperty ;
+    rdfs:label "cohort"@en ;
+    rdfs:range xsd:string .
+
+hust:creditWorkloadAsPublished a owl:DatatypeProperty ;
+    rdfs:label "Khối lượng tín chỉ theo nguồn"@vi ;
+    rdfs:domain hust:CurriculumEntry ;
+    rdfs:range xsd:string .
+
+hust:currentRosterOrdinal a owl:AnnotationProperty ;
+    rdfs:label "Số thứ tự danh sách nhân sự"@vi .
+
+hust:curriculumCourse a owl:ObjectProperty ;
+    rdfs:label "Học phần tại vị trí trong khung"@vi ;
+    rdfs:domain hust:CurriculumEntry ;
+    rdfs:range hust:academic_Course .
+
+hust:curriculumSelectionRule a owl:DatatypeProperty ;
+    rdfs:label "Quy tắc chọn nhóm học phần"@vi ;
+    rdfs:domain hust:CurriculumGroup ;
+    rdfs:range xsd:string .
+
+hust:curriculumVersionLabel a owl:DatatypeProperty ;
+    rdfs:label "Phiên bản khung theo nguồn"@vi ;
+    rdfs:domain hust:academic_Curriculum ;
+    rdfs:range xsd:string .
+
+hust:documentedBy a owl:ObjectProperty ;
+    rdfs:label "Được ghi nhận trong bài thông tin"@vi ;
+    rdfs:domain hust:Event ;
+    rdfs:range hust:InformationResource .
+
+hust:doi a owl:DatatypeProperty ;
+    rdfs:label "DOI"@en,
+        "mã DOI"@vi ;
+    rdfs:domain hust:Publication ;
+    rdfs:range xsd:string .
+
+hust:employmentStatus a owl:DatatypeProperty ;
+    rdfs:label "Employment status"@en,
+        "Trạng thái công việc"@vi ;
+    rdfs:comment "Trạng thái công việc của lần đảm nhiệm vai trò, theo nguồn: đang làm, nghỉ hưu, nghỉ việc, tạm nghỉ… Không suy ra trạng thái cụ thể từ isCurrent=false; thiếu thông tin là chưa ghi nhận."@vi ;
+    rdfs:domain hust:StaffTitle ;
+    rdfs:range xsd:string .
+
+hust:endDate a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "end date"@en,
+        "ngày kết thúc"@vi ;
+    rdfs:domain hust:UniversityRelation ;
+    rdfs:range xsd:date .
+
+hust:entityResolutionStatus a owl:AnnotationProperty ;
+    rdfs:label "Trạng thái đối chiếu danh tính"@vi .
+
+hust:eventDeliveryMode a owl:DatatypeProperty ;
+    rdfs:label "Hình thức tổ chức sự kiện"@vi ;
+    rdfs:domain hust:Event ;
+    rdfs:range xsd:string .
+
+hust:evidenceList a owl:ObjectProperty ;
+    rdfs:label "Thuộc danh sách nguồn"@vi ;
+    rdfs:domain hust:SourceEvidence ;
+    rdfs:range hust:SourceList .
+
+hust:evidenceType a owl:AnnotationProperty ;
+    rdfs:label "evidence type"@en,
+        "Loại bằng chứng"@vi .
+
+hust:foundingYear a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "founding year"@en,
+        "năm thành lập"@vi ;
+    rdfs:domain hust:Organization ;
+    rdfs:range xsd:integer .
+
+hust:governedBy a owl:ObjectProperty ;
+    rdfs:label "governed by"@en,
+        "chịu sự quản lý của"@vi ;
+    rdfs:domain hust:EducationalOrganization ;
+    rdfs:range hust:GovernmentAgency .
+
+hust:hasAchievement a owl:ObjectProperty ;
+    rdfs:label "có thành tích"@vi ;
+    rdfs:domain hust:Person ;
+    rdfs:range hust:Achievement ;
+    owl:inverseOf hust:achievedBy .
+
+hust:hasAffiliation a owl:ObjectProperty ;
+    rdfs:label "Có tư cách tham gia"@vi ;
+    rdfs:domain hust:Person ;
+    rdfs:range hust:Affiliation ;
+    rdfs:subPropertyOf hust:hasUniversityRelation .
+
+hust:hasEditorialRole a owl:ObjectProperty ;
+    rdfs:label "has editorial role"@en,
+        "has editorial role"@vi ;
+    rdfs:domain hust:Person ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( hust:DeputyEditorInChief hust:EditorInChief hust:EditorialContent ) ] ;
+    rdfs:subPropertyOf hust:hasUniversityRelation ;
+    hust:reference <https://www.w3.org/TR/owl-primer/> .
+
+hust:hasLiaisonRole a owl:ObjectProperty ;
+    rdfs:label "has liaison role"@en,
+        "has liaison role"@vi ;
+    rdfs:domain hust:Person ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( hust:Liaison ) ] ;
+    rdfs:subPropertyOf hust:hasUniversityRelation ;
+    hust:reference <https://www.w3.org/TR/owl-primer/> .
+
+hust:hasPartnershipCoordinatorRole a owl:ObjectProperty ;
+    rdfs:label "has partnership coordinator role"@en,
+        "has partnership coordinator role"@vi ;
+    rdfs:domain hust:Person ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( hust:AlumniNetworkPresident hust:Donor hust:ExternalRelationsPartnership hust:InternationalRelationsOfficer ) ] ;
+    rdfs:subPropertyOf hust:hasUniversityRelation ;
+    hust:reference <https://www.w3.org/TR/owl-primer/> .
+
+hust:hasResearchLeadershipRole a owl:ObjectProperty ;
+    rdfs:label "has research leadership role"@en,
+        "has research leadership role"@vi ;
+    rdfs:domain hust:Person ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( hust:ResearchLeadership ) ] ;
+    rdfs:subPropertyOf hust:hasUniversityRelation ;
+    hust:reference <https://www.w3.org/TR/owl-primer/> .
+
+hust:hasSourceEvidence a owl:ObjectProperty ;
+    rdfs:label "Có bằng chứng nguồn"@vi ;
+    rdfs:range hust:SourceEvidence ;
+    owl:inverseOf hust:evidenceSubject .
+
+hust:hasSpokespersonRole a owl:ObjectProperty ;
+    rdfs:label "has spokesperson role"@en,
+        "has spokesperson role"@vi ;
+    rdfs:domain hust:Person ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( hust:Spokesperson ) ] ;
+    rdfs:subPropertyOf hust:hasUniversityRelation ;
+    hust:reference <https://www.w3.org/TR/owl-primer/> .
+
+hust:hasTeachingAssignmentRole a owl:ObjectProperty ;
+    rdfs:label "has teaching assignment role"@en,
+        "has teaching assignment role"@vi ;
+    rdfs:domain hust:Person ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( hust:FacultyMember hust:TeachingAssistant hust:Teaching ) ] ;
+    rdfs:subPropertyOf hust:hasUniversityRelation ;
+    hust:reference <https://www.w3.org/TR/owl-primer/> .
+
+hust:hasWork a owl:ObjectProperty ;
+    rdfs:label "Được giao công việc"@vi ;
+    rdfs:domain hust:Person ;
+    rdfs:range hust:Work ;
+    rdfs:subPropertyOf hust:hasUniversityRelation .
+
+hust:headquarters a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "headquarters"@en,
+        "trụ sở chính"@vi ;
+    rdfs:subPropertyOf hust:hasCampus .
+
+hust:newsPublishedOn a owl:DatatypeProperty ;
+    rdfs:label "Ngày đăng bài thông tin"@vi ;
+    rdfs:range xsd:date .
+
+hust:numberOfFloors a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "number of floors"@en,
+        "số tầng"@vi ;
+    rdfs:domain hust:Building ;
+    rdfs:range xsd:nonNegativeInteger .
+
+hust:officeText a owl:DatatypeProperty ;
+    rdfs:label "office (as published)"@en,
+        "văn phòng (nguyên văn)"@vi ;
+    rdfs:comment "Chuỗi địa chỉ văn phòng đúng như nguồn công bố — giữ để truy vết khi phân tích sang toà nhà/phòng."@vi ;
+    rdfs:domain hust:Organization ;
+    rdfs:range xsd:string .
+
+hust:officialName a owl:DatatypeProperty ;
+    rdfs:label "official name"@en,
+        "tên chính thức"@vi ;
+    rdfs:domain hust:Organization ;
+    rdfs:subPropertyOf schema:legalName .
+
+hust:partOfUniversitySystem a owl:ObjectProperty ;
+    rdfs:label "part of university system"@en,
+        "thuộc hệ thống của đại học"@vi ;
+    rdfs:comment "Doanh nghiệp, trường cao đẳng, trường phổ thông trong 'Hệ thống doanh nghiệp' của đại học — tách khỏi cây org:subOrganizationOf học thuật."@vi ;
+    rdfs:domain hust:Organization ;
+    rdfs:range hust:University .
+
+hust:participantsAsPublished a owl:DatatypeProperty ;
+    rdfs:label "Thành viên nguyên văn trong nguồn"@vi ;
+    rdfs:range xsd:string .
+
+hust:patentIssuedDate a owl:DatatypeProperty ;
+    rdfs:label "Ngày cấp bằng sáng chế"@vi ;
+    rdfs:range xsd:date .
+
+hust:patentNumber a owl:DatatypeProperty ;
+    rdfs:label "Số bằng sáng chế"@vi ;
+    rdfs:range xsd:string .
+
+hust:plannedAdmissionQuota a owl:DatatypeProperty ;
+    rdfs:label "Chỉ tiêu tuyển sinh dự kiến"@vi ;
+    rdfs:domain hust:AdmissionOffering ;
+    rdfs:range xsd:nonNegativeInteger .
+
+hust:plannedStudySemester a owl:DatatypeProperty ;
+    rdfs:label "Học kỳ dự kiến trong khung"@vi ;
+    rdfs:domain hust:CurriculumEntry ;
+    rdfs:range xsd:positiveInteger .
+
+hust:principalInvestigator a owl:ObjectProperty ;
+    rdfs:label "Chủ nhiệm dự án"@vi ;
+    rdfs:domain hust:ResearchProject ;
+    rdfs:range hust:Person .
+
+hust:projectCode a owl:DatatypeProperty ;
+    rdfs:label "project code"@en,
+        "mã dự án"@vi ;
+    rdfs:domain hust:ResearchProject ;
+    rdfs:range xsd:string .
+
+hust:projectEndDate a owl:DatatypeProperty ;
+    rdfs:label "project end date"@en,
+        "ngày kết thúc dự án"@vi ;
+    rdfs:domain hust:ResearchProject ;
+    rdfs:range xsd:date .
+
+hust:projectStartDate a owl:DatatypeProperty ;
+    rdfs:label "project start date"@en,
+        "ngày bắt đầu dự án"@vi ;
+    rdfs:domain hust:ResearchProject ;
+    rdfs:range xsd:date .
+
+hust:publicCredentialLiteral a owl:DatatypeProperty ;
+    rdfs:label "public credential literal"@en,
+        "học vị/chứng nhận công khai"@vi ;
+    rdfs:domain hust:Person ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:unionOf ( xsd:string rdf:langString ) ] .
+
+hust:publicResearchRecordId a owl:AnnotationProperty ;
+    rdfs:label "Định danh bản ghi nghiên cứu công khai"@vi .
+
+hust:publicationDate a owl:DatatypeProperty ;
+    rdfs:label "publication date"@en,
+        "ngày công bố"@vi ;
+    rdfs:domain hust:Publication ;
+    rdfs:range xsd:date .
+
+hust:publicationYear a owl:DatatypeProperty ;
+    rdfs:label "Năm công bố"@vi ;
+    rdfs:range xsd:gYear .
+
+hust:publiclyListedBy a owl:ObjectProperty ;
+    rdfs:label "Được đơn vị công khai trong danh mục"@vi ;
+    rdfs:range hust:Organization .
+
+hust:reference a owl:AnnotationProperty ;
+    rdfs:label "reference"@en,
+        "Nguồn tham chiếu công khai"@vi,
+        "nguồn tham khảo"@vi .
+
+hust:relatedRoleCategory a owl:AnnotationProperty ;
+    rdfs:label "Lĩnh vực / nhóm liên quan"@vi ;
+    rdfs:comment "Liên hệ mô tả giữa chức danh, công việc hoặc tư cách; không phải quan hệ kế thừa lớp và không tự tạo nhiệm vụ cá thể."@vi .
+
+hust:relatedToOrganization a owl:ObjectProperty ;
+    rdfs:label "related to organization"@en ;
+    rdfs:domain hust:Person ;
+    rdfs:range hust:Organization .
+
+hust:relationshipToHUSTLiteral a owl:DatatypeProperty ;
+    rdfs:label "relationship to HUST"@en ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:unionOf ( xsd:string rdf:langString ) ] .
+
+hust:researchInterestLiteral a owl:DatatypeProperty ;
+    rdfs:label "research interest literal"@en ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:unionOf ( xsd:string rdf:langString ) ] .
+
+hust:resourceIdentifier a owl:DatatypeProperty ;
+    rdfs:label "resource identifier"@en,
+        "định danh tài nguyên"@vi ;
+    rdfs:domain hust:InformationResource ;
+    rdfs:range xsd:string .
+
+hust:responsibilityNote a owl:AnnotationProperty ;
+    rdfs:label "Ghi chú đối chiếu nguồn"@vi .
+
+hust:roleFamily a owl:AnnotationProperty ;
+    rdfs:label "role family"@en,
+        "Nhóm vai trò"@vi .
+
+hust:roomNumber a owl:DatatypeProperty ;
+    rdfs:label "room number"@en,
+        "số phòng"@vi ;
+    rdfs:domain hust:Room ;
+    rdfs:range xsd:string .
+
+hust:scopeNote a owl:AnnotationProperty ;
+    rdfs:label "scope note"@en,
+        "Ghi chú phạm vi"@vi .
+
+hust:shortName a owl:DatatypeProperty ;
+    rdfs:label "short name"@en,
+        "tên viết tắt"@vi ;
+    rdfs:domain hust:Organization ;
+    rdfs:subPropertyOf schema:alternateName .
+
+hust:sourceAcademicRankText a owl:AnnotationProperty ;
+    rdfs:label "Học hàm nguyên văn trong nguồn"@vi .
+
+hust:sourceCheckedOn a owl:DatatypeProperty ;
+    rdfs:label "source checked on"@en,
+        "ngày kiểm tra nguồn"@vi ;
+    rdfs:range xsd:date .
+
+hust:sourceClaimNote a owl:AnnotationProperty ;
+    rdfs:label "Nội dung nguồn khẳng định"@vi .
+
+hust:sourceCohortText a owl:AnnotationProperty ;
+    rdfs:label "Khóa nguyên văn trong nguồn"@vi .
+
+hust:sourceDegreeText a owl:AnnotationProperty ;
+    rdfs:label "Học vị nguyên văn trong nguồn"@vi .
+
+hust:sourceListAcademicYear a owl:AnnotationProperty ;
+    rdfs:label "Năm học của danh sách nguồn"@vi .
+
+hust:sourceListName a owl:AnnotationProperty ;
+    rdfs:label "Tên danh sách nguồn"@vi .
+
+hust:sourceListOrdinal a owl:AnnotationProperty ;
+    rdfs:label "Số thứ tự dòng nguồn"@vi .
+
+hust:sourceRecordedCurrentStatus a owl:AnnotationProperty ;
+    rdfs:comment "Trạng thái isCurrent được lưu từ bản dữ liệu cũ; không xác định vai trò hiện hành hay hiệu lực của thành tích."@vi .
+
+hust:sourceTableRow a owl:AnnotationProperty ;
+    rdfs:label "Dòng trong bảng nguồn"@vi .
+
+hust:streetAddress a owl:DatatypeProperty ;
+    rdfs:label "street address"@en,
+        "địa chỉ"@vi ;
+    rdfs:domain hust:Place ;
+    rdfs:subPropertyOf schema:streetAddress .
+
+hust:studentClassLiteral a owl:DatatypeProperty ;
+    rdfs:label "student class literal"@en,
+        "lớp sinh viên công khai"@vi ;
+    rdfs:domain hust:Person ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:unionOf ( xsd:string rdf:langString ) ] .
+
+hust:studentIdentifier a owl:DatatypeProperty ;
+    rdfs:label "student identifier"@en,
+        "Mã sinh viên"@vi ;
+    rdfs:comment "Mã định danh sinh viên theo nguồn. Việc có mã không xác nhận người đang học hiện tại; tình trạng hiện tại phải dựa trên vai trò có isCurrent=true."@vi ;
+    rdfs:domain hust:Student ;
+    rdfs:range xsd:string .
+
+hust:trainingOrientation a owl:ObjectProperty ;
+    rdfs:label "Định hướng đào tạo"@vi ;
+    rdfs:domain hust:academic_AcademicProgram ;
+    rdfs:range hust:ProgramOrientation .
+
+hust:unitLocatedIn a owl:ObjectProperty ;
+    rdfs:label "unit located in"@en,
+        "đơn vị đặt tại"@vi ;
+    rdfs:subPropertyOf hust:organizationLocatedIn ;
+    owl:propertyChainAxiom ( hust:occupies hust:locatedIn ) .
+
+hust:workDescription a owl:DatatypeProperty ;
+    rdfs:label "Công việc theo nguồn"@vi ;
+    rdfs:domain hust:Work ;
+    rdfs:range xsd:string .
+
+schema:foundingDate a owl:DatatypeProperty .
+
+schema:telephone a owl:DatatypeProperty .
+
+org:OrganizationalUnit rdfs:subClassOf org:Organization .
+
+org:hasSubOrganization a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "has sub organization"@en ;
+    rdfs:isDefinedBy org: .
+
+org:subOrganizationOf a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "sub organization of"@en ;
+    rdfs:isDefinedBy org: ;
+    owl:inverseOf org:hasSubOrganization .
+
+hust:AcademicBuilding a owl:Class ;
+    rdfs:label "Academic Building"@en,
+        "Nhà học tập / làm việc"@vi ;
+    rdfs:subClassOf hust:Building .
+
+hust:AcademicCoordination a owl:Class ;
+    rdfs:label "Academic coordination"@en,
+        "Điều phối học thuật"@vi ;
+    rdfs:seeAlso <https://www.w3.org/TR/owl-primer/> ;
+    rdfs:subClassOf hust:Work ;
+    hust:reference <https://www.w3.org/TR/owl-primer/> .
+
+hust:AcademicSchedulingOfficer a owl:Class ;
+    rdfs:label "Academic scheduling officer"@en,
+        "Chuyên viên kế hoạch/xếp lịch đào tạo"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-dao-tao.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "functional-inference" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-dao-tao.html> ;
+    hust:relatedRoleCategory hust:AcademicAdministration ;
+    hust:roleFamily "AcademicAdministration" .
+
+hust:AccreditationOfficer a owl:Class ;
+    rdfs:label "Accreditation officer"@en,
+        "Chuyên viên kiểm định"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-quan-ly-chat-luong.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-function" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-quan-ly-chat-luong.html> ;
+    hust:relatedRoleCategory hust:QualityAssuranceAccreditation ;
+    hust:roleFamily "QualityAssuranceAccreditation" .
+
+hust:AdministrativeOffice a owl:Class ;
+    rdfs:label "Administrative Office"@en,
+        "Văn phòng / Ban chức năng"@vi ;
+    rdfs:subClassOf hust:UniversityUnit .
+
+hust:AdministrativeStaff a owl:Class ;
+    rdfs:label "Nhân sự hành chính và hỗ trợ"@vi ;
+    rdfs:subClassOf hust:Staff ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( hust:Person [ a owl:Restriction ;
+                        owl:onProperty hust:hasUniversityRelation ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:unionOf ( hust:AcademicAdministration hust:AcademicSchedulingOfficer hust:Accountant hust:AccreditationOfficer hust:AdministrativeProfessional hust:AdmissionsMediaSpokesperson hust:AlumniNetworkPresident hust:BookstoreManager hust:CommunicationsMedia hust:DegreeCertificateOfficer hust:DeputyEditorInChief hust:Donor hust:EditorInChief hust:EditorialDepartmentHead hust:EmployerRelationsOfficer hust:ExternalRelationsPartnership hust:FinanceProcurementLegal hust:GraduateEmploymentAnalyst hust:GraduationProcessingOfficer hust:ITDigital hust:ITOfficer hust:IndustryResearchPartnershipOfficer hust:InnovationTechnologyTransfer hust:InternationalRelationsOfficer hust:ProcurementSpecialist hust:PublishingDeputyDirector hust:PublishingDirector hust:PublishingEditorial hust:QualityAssuranceAccreditation hust:QualityInformationOfficer hust:ScholarshipOfficer hust:StudentActivitiesOfficer hust:StudentDisciplineOfficer hust:StudentRecordsOfficer hust:StudentSupportCareer hust:TechnicalLaboratory hust:WelfareHealth ) ] ] ) ] .
+
+hust:AdmissionsMediaSpokesperson a owl:Class ;
+    rdfs:label "Admissions media spokesperson"@en,
+        "Đầu mối trả lời truyền thông tuyển sinh"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/phong-tuyen-sinh-358991.html> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hust:roleRepresentsOrganization ;
+            owl:someValuesFrom hust:Organization ],
+        [ a owl:Restriction ;
+            owl:onProperty hust:roleContactPointFor ;
+            owl:someValuesFrom hust:Organization ],
+        hust:Spokesperson ;
+    hust:evidenceType "explicit-function" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/phong-tuyen-sinh-358991.html> ;
+    hust:relatedRoleCategory hust:AdmissionsOfficer ;
+    hust:roleFamily "AdmissionsOfficer" .
+
+hust:AdvisorySupervision a owl:Class ;
+    rdfs:label "Advisory / supervision"@en,
+        "Cố vấn / hướng dẫn"@vi ;
+    rdfs:seeAlso <https://sdh.hust.edu.vn/Upload/19/files/Quyche/2024/10_2%20Quy%20ch%E1%BA%BF%20TCQL%20%C4%90%C3%A0o%20t%E1%BA%A1o_2024_VP%C4%90H_final_%C4%91%C3%A3%20k%C3%BD.pdf>,
+        <https://www.ox.ac.uk/students/welfare/wellbeing-at-oxford> ;
+    rdfs:subClassOf hust:Work ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://sdh.hust.edu.vn/Upload/19/files/Quyche/2024/10_2%20Quy%20ch%E1%BA%BF%20TCQL%20%C4%90%C3%A0o%20t%E1%BA%A1o_2024_VP%C4%90H_final_%C4%91%C3%A3%20k%C3%BD.pdf>,
+        <https://www.ox.ac.uk/students/welfare/wellbeing-at-oxford> .
+
+hust:BookstoreManager a owl:Class ;
+    rdfs:label "Bookstore manager"@en,
+        "Giám đốc/phụ trách nhà sách"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/nha-xuat-ban-bach-khoa-69599.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/nha-xuat-ban-bach-khoa-69599.html> ;
+    hust:relatedRoleCategory hust:PublishingEditorial ;
+    hust:roleFamily "PublishingEditorial" .
+
+hust:Center a owl:Class ;
+    rdfs:label "Center"@en,
+        "Trung tâm"@vi ;
+    rdfs:subClassOf hust:UniversityUnit .
+
+hust:CenterDirector a owl:Class ;
+    rdfs:label "Center director"@en,
+        "Giám đốc trung tâm"@vi ;
+    rdfs:seeAlso <https://sep.hust.edu.vn/bo-mon/trungtam-tn-th-vatlykythuat/danh-sach-can-bo-7.html>,
+        <https://soict.hust.edu.vn/dang-uy-truong.html> ;
+    rdfs:subClassOf hust:LeadershipManagement ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://sep.hust.edu.vn/bo-mon/trungtam-tn-th-vatlykythuat/danh-sach-can-bo-7.html>,
+        <https://soict.hust.edu.vn/dang-uy-truong.html> ;
+    hust:roleFamily "LeadershipManagement" .
+
+hust:CommitteeChair a owl:Class ;
+    rdfs:label "Committee chair"@en,
+        "Chủ tịch/Trưởng hội đồng, ban"@vi ;
+    rdfs:seeAlso <https://soict.hust.edu.vn/dang-uy-truong.html> ;
+    rdfs:subClassOf hust:GovernanceRepresentation ;
+    owl:disjointWith hust:CommitteeViceChair ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://soict.hust.edu.vn/dang-uy-truong.html> ;
+    hust:roleFamily "GovernanceRepresentation" .
+
+hust:CommitteeSecretary a owl:Class ;
+    rdfs:label "Committee secretary"@en,
+        "Thư ký hội đồng/ban"@vi ;
+    rdfs:seeAlso <https://soict.hust.edu.vn/dang-uy-truong.html> ;
+    rdfs:subClassOf hust:GovernanceRepresentation ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://soict.hust.edu.vn/dang-uy-truong.html> ;
+    hust:roleFamily "GovernanceRepresentation" .
+
+hust:Commune a owl:Class ;
+    rdfs:label "Commune-level unit"@en,
+        "Đơn vị cấp xã (xã / phường / đặc khu)"@vi ;
+    rdfs:comment "Từ 01/07/2025 Việt Nam dùng chính quyền địa phương HAI cấp: tỉnh và xã. Phường thuộc thẳng tỉnh/thành phố."@vi ;
+    rdfs:subClassOf hust:AdministrativeArea .
+
+hust:CorporateBoardChair a owl:Class ;
+    rdfs:label "Corporate board chair"@en,
+        "Chủ tịch hội đồng quản trị doanh nghiệp"@vi ;
+    rdfs:seeAlso <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/hoi-dong-khoa-hoc-va-dao-tao.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-public-title-or-function" ;
+    hust:reference <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/hoi-dong-khoa-hoc-va-dao-tao.html> ;
+    hust:relatedRoleCategory hust:ExternalAffiliation .
+
+hust:Country a owl:Class ;
+    rdfs:label "Country"@en,
+        "Quốc gia"@vi ;
+    rdfs:subClassOf hust:AdministrativeArea .
+
+hust:CurriculumGroup a owl:Class ;
+    rdfs:label "Nhóm học phần trong khung chương trình"@vi ;
+    rdfs:subClassOf hust:academic_AcademicEntity .
+
+hust:DegreeCertificateOfficer a owl:Class ;
+    rdfs:label "Degree and certificate officer"@en,
+        "Chuyên viên văn bằng chứng chỉ"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-dao-tao.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-function" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-dao-tao.html> ;
+    hust:relatedRoleCategory hust:AcademicAdministration ;
+    hust:roleFamily "AcademicAdministration" .
+
+hust:Department a owl:Class ;
+    rdfs:label "Department"@en,
+        "Bộ môn"@vi ;
+    rdfs:comment "Đơn vị chuyên môn cấp thấp nhất. Sau tái cấu trúc 2021–2022, các Trường thuộc HUST gọi là 'Nhóm chuyên môn' (NCM), nằm dưới Khoa: Trường → Khoa → NCM."@vi ;
+    rdfs:subClassOf hust:UniversityUnit ;
+    skos:altLabel "Nhóm chuyên môn"@vi .
+
+hust:DiningBuilding a owl:Class ;
+    rdfs:label "Dining Building"@en,
+        "Nhà ăn / Căng tin"@vi ;
+    rdfs:subClassOf hust:Building .
+
+hust:District a owl:Class ;
+    rdfs:label "District (abolished)"@en,
+        "Quận / Huyện (đã bãi bỏ)"@vi ;
+    rdfs:comment "Cấp huyện bị bãi bỏ từ 01/07/2025. Giữ lớp để biểu diễn dữ liệu lịch sử (địa chỉ cũ 'quận Hai Bà Trưng' vẫn xuất hiện trong nguồn)."@vi ;
+    rdfs:subClassOf hust:AdministrativeArea ;
+    owl:deprecated true .
+
+hust:DoctoralStudentAffiliation a owl:Class ;
+    rdfs:label "Doctoral / PhD student"@en,
+        "Nghiên cứu sinh / sinh viên tiến sĩ"@vi ;
+    rdfs:seeAlso <https://hust.edu.vn/vi/tuyen-sinh/thong-tin-tuyen-sinh-15/thong-tin-tuyen-sinh-ncs-499909.html>,
+        <https://me.stanford.edu/people> ;
+    rdfs:subClassOf hust:GraduateStudent ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://hust.edu.vn/vi/tuyen-sinh/thong-tin-tuyen-sinh-15/thong-tin-tuyen-sinh-ncs-499909.html>,
+        <https://me.stanford.edu/people> ;
+    hust:roleFamily "GraduateStudent" .
+
+hust:Dormitory a owl:Class ;
+    rdfs:label "Dormitory"@en,
+        "Ký túc xá"@vi ;
+    rdfs:subClassOf hust:Building .
+
+hust:EditorialDepartmentHead a owl:Class ;
+    rdfs:label "Editorial department head"@en,
+        "Trưởng ban biên tập"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/nha-xuat-ban-bach-khoa-69599.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/nha-xuat-ban-bach-khoa-69599.html> ;
+    hust:relatedRoleCategory hust:PublishingEditorial ;
+    hust:roleFamily "PublishingEditorial" .
+
+hust:EmployerRelationsOfficer a owl:Class ;
+    rdfs:label "Employer relations officer"@en,
+        "Chuyên viên quan hệ nhà tuyển dụng"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html>,
+        <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "functional-inference" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html>,
+        <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html> ;
+    hust:relatedRoleCategory hust:StudentSupportCareer ;
+    hust:roleFamily "StudentSupportCareer" .
+
+hust:Enterprise a owl:Class ;
+    rdfs:label "Enterprise"@en,
+        "Doanh nghiệp"@vi ;
+    rdfs:subClassOf hust:Organization,
+        schema:Corporation .
+
+hust:ExecutiveBoard a owl:Class ;
+    rdfs:label "Executive Board"@en,
+        "Ban Giám đốc"@vi ;
+    rdfs:subClassOf hust:UniversityUnit .
+
+hust:ExternalPublicOfficial a owl:Class ;
+    rdfs:label "External public official"@en,
+        "Công chức/lãnh đạo cơ quan công quyền bên ngoài"@vi ;
+    rdfs:seeAlso <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/hoi-dong-khoa-hoc-va-dao-tao.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-public-title-or-function" ;
+    hust:reference <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/hoi-dong-khoa-hoc-va-dao-tao.html> ;
+    hust:relatedRoleCategory hust:ExternalAffiliation .
+
+hust:Faculty a owl:Class ;
+    rdfs:label "Faculty"@en,
+        "Khoa"@vi ;
+    rdfs:subClassOf hust:UniversityUnit .
+
+hust:Floor a owl:Class ;
+    rdfs:label "Floor"@en,
+        "Tầng"@vi ;
+    rdfs:subClassOf hust:Facility .
+
+hust:Gate a owl:Class ;
+    rdfs:label "Gate"@en,
+        "Cổng"@vi ;
+    rdfs:subClassOf hust:Facility .
+
+hust:GoverningCouncil a owl:Class ;
+    rdfs:label "Governing Council"@en,
+        "Hội đồng"@vi ;
+    rdfs:subClassOf hust:UniversityUnit .
+
+hust:GraduateEmploymentAnalyst a owl:Class ;
+    rdfs:label "Graduate employment analyst"@en,
+        "Chuyên viên phân tích việc làm sau tốt nghiệp"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-function" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html> ;
+    hust:relatedRoleCategory hust:StudentSupportCareer ;
+    hust:roleFamily "StudentSupportCareer" .
+
+hust:GraduationProcessingOfficer a owl:Class ;
+    rdfs:label "Graduation processing officer"@en,
+        "Chuyên viên xét tốt nghiệp"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-dao-tao.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-function" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-dao-tao.html> ;
+    hust:relatedRoleCategory hust:AcademicAdministration ;
+    hust:roleFamily "AcademicAdministration" .
+
+hust:ITOfficer a owl:Class ;
+    rdfs:label "IT officer"@en,
+        "Chuyên viên CNTT"@vi ;
+    rdfs:seeAlso <https://www.pmb.ox.ac.uk/vacancy/it-officer-systems-administrator-socit-consortium> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://www.pmb.ox.ac.uk/vacancy/it-officer-systems-administrator-socit-consortium> ;
+    hust:relatedRoleCategory hust:ITDigital ;
+    hust:roleFamily "ITDigital" .
+
+hust:IndustryResearchPartnershipOfficer a owl:Class ;
+    rdfs:label "Industry research partnership officer"@en,
+        "Chuyên viên hợp tác nghiên cứu với doanh nghiệp"@vi ;
+    rdfs:seeAlso <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-khoa-hoc-cong-nghe.html> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hust:roleCoordinatesPartnershipWith ;
+            owl:someValuesFrom hust:Organization ],
+        hust:Role ;
+    hust:evidenceType "explicit-function" ;
+    hust:reference <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-khoa-hoc-cong-nghe.html> ;
+    hust:relatedRoleCategory hust:InnovationTechnologyTransfer ;
+    hust:roleFamily "InnovationTechnologyTransfer" .
+
+hust:K12School a owl:Class ;
+    rdfs:label "K-12 School"@en,
+        "Trường phổ thông"@vi ;
+    rdfs:subClassOf hust:EducationalOrganization .
+
+hust:LecturerTitle a owl:Class ;
+    rdfs:label "Lecturer"@en,
+        "Giảng viên"@vi ;
+    rdfs:seeAlso <https://scls.hust.edu.vn/vi/organs/>,
+        <https://smse.hust.edu.vn/vi/organs/> ;
+    rdfs:subClassOf hust:FacultyMember ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://scls.hust.edu.vn/vi/organs/>,
+        <https://smse.hust.edu.vn/vi/organs/> ;
+    hust:roleFamily "FacultyMember" .
+
+hust:LibraryBuilding a owl:Class ;
+    rdfs:label "Library Building"@en,
+        "Toà nhà thư viện"@vi ;
+    rdfs:subClassOf hust:Building,
+        schema:Library .
+
+hust:Manager a owl:Class ;
+    rdfs:label "Cán bộ quản lý"@vi ;
+    rdfs:subClassOf hust:Staff ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( hust:Person [ a owl:Restriction ;
+                        owl:onProperty hust:hasUniversityRelation ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:unionOf ( hust:LeadershipManagement ) ] ] ) ] .
+
+hust:MassOrganization a owl:Class ;
+    rdfs:label "Mass Organization"@en,
+        "Tổ chức đoàn thể"@vi ;
+    rdfs:comment "Công đoàn, Đoàn Thanh niên, Hội Sinh viên, Hội Cựu chiến binh..."@vi ;
+    rdfs:subClassOf hust:Organization .
+
+hust:MasterStudentAffiliation a owl:Class ;
+    rdfs:label "Master's student"@en,
+        "Học viên cao học / học viên thạc sĩ"@vi ;
+    rdfs:seeAlso <https://hust.edu.vn/vi/tuyen-sinh/thong-tin-tuyen-sinh-15/thong-tin-tuyen-sinh-ncs-499909.html> ;
+    rdfs:subClassOf hust:GraduateStudent ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://hust.edu.vn/vi/tuyen-sinh/thong-tin-tuyen-sinh-15/thong-tin-tuyen-sinh-ncs-499909.html> ;
+    hust:roleFamily "GraduateStudent" .
+
+hust:Mentor a owl:Class ;
+    rdfs:label "Mentor"@en,
+        "Mentor / người cố vấn"@vi ;
+    rdfs:seeAlso <https://sem.hust.edu.vn/cau-lac-bo-sinh-vien-2>,
+        <https://www.ox.ac.uk/students/welfare/wellbeing-at-oxford> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hust:roleWithPerson ;
+            owl:someValuesFrom hust:Person ],
+        hust:AdvisorySupervision ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://sem.hust.edu.vn/cau-lac-bo-sinh-vien-2>,
+        <https://www.ox.ac.uk/students/welfare/wellbeing-at-oxford> ;
+    hust:roleFamily "AdvisorySupervision" .
+
+hust:OutdoorSportsFacility a owl:Class ;
+    rdfs:label "Outdoor Sports Facility"@en,
+        "Sân / bể thể thao"@vi ;
+    rdfs:subClassOf hust:Facility .
+
+hust:ParkingFacility a owl:Class ;
+    rdfs:label "Parking Facility"@en,
+        "Nhà / bãi gửi xe"@vi ;
+    rdfs:subClassOf hust:Facility .
+
+hust:ProgramOrientation a owl:Class ;
+    rdfs:label "Định hướng đào tạo"@vi .
+
+hust:Province a owl:Class ;
+    rdfs:label "Province"@en,
+        "Tỉnh / Thành phố trực thuộc trung ương"@vi ;
+    rdfs:subClassOf hust:AdministrativeArea .
+
+hust:PublishingDeputyDirector a owl:Class ;
+    rdfs:label "Publishing house deputy director"@en,
+        "Phó giám đốc nhà xuất bản"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/nha-xuat-ban-bach-khoa-69599.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/nha-xuat-ban-bach-khoa-69599.html> ;
+    hust:relatedRoleCategory hust:PublishingEditorial ;
+    hust:roleFamily "PublishingEditorial" .
+
+hust:PublishingDirector a owl:Class ;
+    rdfs:label "Publishing house director"@en,
+        "Giám đốc nhà xuất bản"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/nha-xuat-ban-bach-khoa-69599.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/nha-xuat-ban-bach-khoa-69599.html> ;
+    hust:relatedRoleCategory hust:PublishingEditorial ;
+    hust:roleFamily "PublishingEditorial" .
+
+hust:PublishingUnit a owl:Class ;
+    rdfs:label "Publishing Unit"@en,
+        "Nhà xuất bản / Tạp chí"@vi ;
+    rdfs:subClassOf hust:UniversityUnit .
+
+hust:QualityInformationOfficer a owl:Class ;
+    rdfs:label "Quality information officer"@en,
+        "Chuyên viên thông tin quản lý chất lượng"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-quan-ly-chat-luong.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-function" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-quan-ly-chat-luong.html> ;
+    hust:relatedRoleCategory hust:QualityAssuranceAccreditation ;
+    hust:roleFamily "QualityAssuranceAccreditation" .
+
+hust:Representation a owl:Class ;
+    rdfs:label "Representation"@en,
+        "Đại diện"@vi ;
+    rdfs:seeAlso <https://www.w3.org/TR/owl-primer/> ;
+    rdfs:subClassOf hust:Work ;
+    hust:reference <https://www.w3.org/TR/owl-primer/> .
+
+hust:ResearchInstitute a owl:Class ;
+    rdfs:label "Research Institute"@en,
+        "Viện nghiên cứu"@vi ;
+    rdfs:subClassOf hust:UniversityUnit .
+
+hust:ResearchLaboratory a owl:Class ;
+    rdfs:label "Research Laboratory (unit)"@en,
+        "Phòng thí nghiệm nghiên cứu (đơn vị)"@vi ;
+    rdfs:comment "PTN với tư cách NHÓM NGHIÊN CỨU (tổ chức). Khác uni:LaboratoryRoom là CĂN PHÒNG vật lý — cùng chữ 'phòng thí nghiệm' nhưng tiêu chí định danh khác nhau (OntoClean Identity)."@vi ;
+    rdfs:subClassOf hust:UniversityUnit .
+
+hust:ScholarshipOfficer a owl:Class ;
+    rdfs:label "Scholarship officer"@en,
+        "Chuyên viên học bổng"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-function" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html> ;
+    hust:relatedRoleCategory hust:StudentSupportCareer ;
+    hust:roleFamily "StudentSupportCareer" .
+
+hust:School a owl:Class ;
+    rdfs:label "School"@en,
+        "Trường (thuộc đại học)"@vi ;
+    rdfs:comment "Trường thuộc HUST (vd: Trường Công nghệ Thông tin và Truyền thông). KHÁC 'trường thành viên' của ĐHQG: không tuyển sinh độc lập, không có mã trường riêng."@vi ;
+    rdfs:subClassOf hust:UniversityUnit .
+
+hust:SeniorLecturer a owl:Class ;
+    rdfs:label "Senior lecturer"@en,
+        "Giảng viên chính"@vi ;
+    rdfs:seeAlso <https://coi.mit.edu/opa-guidance/permitted-time>,
+        <https://smse.hust.edu.vn/vi/organs/> ;
+    rdfs:subClassOf hust:LecturerTitle ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://coi.mit.edu/opa-guidance/permitted-time>,
+        <https://smse.hust.edu.vn/vi/organs/> ;
+    hust:roleFamily "LecturerTitle" .
+
+hust:ServiceBuilding a owl:Class ;
+    rdfs:label "Service Building"@en,
+        "Nhà dịch vụ / khác"@vi ;
+    rdfs:subClassOf hust:Building .
+
+hust:SourceList a owl:Class ;
+    rdfs:label "Danh sách nguồn"@vi .
+
+hust:SportsBuilding a owl:Class ;
+    rdfs:label "Sports Building"@en,
+        "Nhà thi đấu"@vi ;
+    rdfs:subClassOf hust:Building .
+
+hust:StaffTitle a owl:Class ;
+    rdfs:label "Staff"@en,
+        "Cán bộ / nhân viên"@vi ;
+    rdfs:seeAlso <https://centerfordesignresearch.stanford.edu/people>,
+        <https://smse.hust.edu.vn/vi/organs/> ;
+    rdfs:subClassOf hust:AdministrativeProfessional ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://centerfordesignresearch.stanford.edu/people>,
+        <https://smse.hust.edu.vn/vi/organs/> ;
+    hust:roleFamily "AdministrativeProfessional" .
+
+hust:StudentActivitiesOfficer a owl:Class ;
+    rdfs:label "Student activities officer"@en,
+        "Chuyên viên hoạt động sinh viên"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-function" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html> ;
+    hust:relatedRoleCategory hust:StudentSupportCareer ;
+    hust:roleFamily "StudentSupportCareer" .
+
+hust:StudentDisciplineOfficer a owl:Class ;
+    rdfs:label "Student discipline officer"@en,
+        "Chuyên viên khen thưởng - kỷ luật sinh viên"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-function" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html> ;
+    hust:relatedRoleCategory hust:StudentSupportCareer ;
+    hust:roleFamily "StudentSupportCareer" .
+
+hust:StudentRecordsOfficer a owl:Class ;
+    rdfs:label "Student records officer"@en,
+        "Chuyên viên hồ sơ sinh viên"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-function" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html> ;
+    hust:relatedRoleCategory hust:StudentSupportCareer ;
+    hust:roleFamily "StudentSupportCareer" .
+
+hust:TechnicalLaboratory a owl:Class ;
+    rdfs:label "Technical / laboratory"@en,
+        "Kỹ thuật / phòng thí nghiệm"@vi ;
+    rdfs:seeAlso <https://sep.hust.edu.vn/bo-mon/trungtam-tn-th-vatlykythuat/danh-sach-can-bo-7.html>,
+        <https://smse.hust.edu.vn/vi/organs/vieworg/Trung-tam-ky-thuat-16/> ;
+    rdfs:subClassOf hust:Work ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://sep.hust.edu.vn/bo-mon/trungtam-tn-th-vatlykythuat/danh-sach-can-bo-7.html>,
+        <https://smse.hust.edu.vn/vi/organs/vieworg/Trung-tam-ky-thuat-16/> .
+
+hust:TraineeLecturerTitle a owl:Class ;
+    rdfs:label "Giảng viên tạo nguồn"@vi ;
+    rdfs:subClassOf hust:Role .
+
+hust:UndergraduateStudentAffiliation a owl:Class ;
+    rdfs:label "Undergraduate student"@en,
+        "Sinh viên đại học"@vi ;
+    rdfs:seeAlso <https://me.stanford.edu/people>,
+        <https://www.hust.edu.vn/vi/sinh-vien/> ;
+    rdfs:subClassOf hust:StudentAffiliation ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://me.stanford.edu/people>,
+        <https://www.hust.edu.vn/vi/sinh-vien/> ;
+    hust:roleFamily "StudentAffiliation" .
+
+hust:UniversityDirector a owl:Class ;
+    rdfs:label "University director / president"@en,
+        "Giám đốc đại học"@vi ;
+    rdfs:seeAlso <https://soict.hust.edu.vn/dang-uy-truong.html> ;
+    rdfs:subClassOf hust:LeadershipManagement ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://soict.hust.edu.vn/dang-uy-truong.html> ;
+    hust:roleFamily "LeadershipManagement" .
+
+hust:VisitingStudent a owl:Class ;
+    rdfs:label "Visiting student"@en,
+        "Sinh viên thăm/khách"@vi ;
+    rdfs:seeAlso <https://centerfordesignresearch.stanford.edu/people> ;
+    rdfs:subClassOf hust:ExternalAffiliation,
+        hust:StudentAffiliation ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://centerfordesignresearch.stanford.edu/people> ;
+    hust:roleFamily "ExternalAffiliation" .
+
+hust:Visitor a owl:Class ;
+    rdfs:label "Visitor"@en,
+        "Khách / người thăm"@vi ;
+    rdfs:seeAlso <https://centerfordesignresearch.stanford.edu/people> ;
+    rdfs:subClassOf hust:ExternalAffiliation ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://centerfordesignresearch.stanford.edu/people> ;
+    hust:roleFamily "ExternalAffiliation" .
+
+hust:VocationalCollege a owl:Class ;
+    rdfs:label "Vocational College"@en,
+        "Trường cao đẳng"@vi ;
+    rdfs:subClassOf hust:EducationalOrganization .
+
+hust:academic_AcademicYear a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicPeriod .
+
+hust:academic_ConferenceWorkshop a owl:Class ;
+    rdfs:subClassOf hust:academic_Workshop .
+
+hust:academic_isActivityOf a owl:ObjectProperty .
+
+hust:academic_occursIn a owl:ObjectProperty .
+
+hust:academic_partOf a owl:ObjectProperty .
+
+hust:academic_precedes a owl:ObjectProperty .
+
+hust:academic_roleOf a owl:ObjectProperty ;
+    rdfs:domain hust:academic_Role ;
+    rdfs:range hust:academic_Person .
+
+hust:achievedBy a owl:ObjectProperty ;
+    rdfs:label "thành tích của người"@vi ;
+    rdfs:domain hust:Achievement ;
+    rdfs:range hust:Person .
+
+hust:authorsInformationResource a owl:ObjectProperty ;
+    rdfs:domain hust:Person ;
+    rdfs:range hust:InformationResource ;
+    owl:inverseOf hust:authoredBy .
+
+hust:containsPlace a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "contains place"@en,
+        "chứa"@vi .
+
+hust:email a owl:DatatypeProperty ;
+    rdfs:label "email"@en,
+        "email"@vi ;
+    rdfs:range xsd:string .
+
+hust:evidenceSubject a owl:ObjectProperty ;
+    rdfs:label "Đối tượng được nguồn ghi nhận"@vi ;
+    rdfs:domain hust:SourceEvidence .
+
+hust:institutionCode a owl:DatatypeProperty ;
+    rdfs:label "institution code"@en,
+        "mã trường"@vi ;
+    rdfs:comment "Mã tuyển sinh do Bộ GD&ĐT cấp (HUST: BKA). Khoá định danh (owl:hasKey)."@vi ;
+    rdfs:domain hust:EducationalOrganization ;
+    rdfs:range xsd:string .
+
+hust:isCurrent a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "is current"@en,
+        "đang còn hiệu lực"@vi ;
+    rdfs:comment "Vai trò này còn hiện hành theo nguồn. false không đồng nghĩa nghỉ hưu; thiếu giá trị không được coi là true. Một người có thể đồng thời có vai trò hiện hành và vai trò lịch sử."@vi ;
+    rdfs:domain hust:UniversityRelation ;
+    rdfs:range xsd:boolean .
+
+hust:isRoleContextOf a owl:ObjectProperty ;
+    rdfs:label "is role context of"@en,
+        "là ngữ cảnh của vai trò"@vi ;
+    rdfs:domain owl:Thing ;
+    rdfs:range hust:UniversityRelation ;
+    hust:reference <https://www.w3.org/TR/owl-primer/> .
+
+hust:occupiedBy a owl:ObjectProperty ;
+    rdfs:label "occupied by"@en,
+        "là văn phòng của"@vi .
+
+hust:occupies a owl:ObjectProperty ;
+    rdfs:label "occupies"@en,
+        "đặt văn phòng tại"@vi ;
+    rdfs:comment "Tổ chức sử dụng một công trình/phòng làm văn phòng (theo trang cơ cấu tổ chức chính thức)."@vi ;
+    rdfs:domain hust:Organization ;
+    rdfs:range hust:Facility ;
+    owl:inverseOf hust:occupiedBy .
+
+hust:organizationLocatedIn a owl:ObjectProperty ;
+    rdfs:label "organization located in"@en,
+        "tổ chức đặt tại"@vi ;
+    rdfs:domain hust:Organization ;
+    rdfs:range hust:Place ;
+    owl:propertyChainAxiom ( hust:hasCampus hust:locatedIn ) .
+
+hust:osmId a owl:DatatypeProperty ;
+    rdfs:label "OpenStreetMap id"@en,
+        "mã OpenStreetMap"@vi ;
+    rdfs:comment "Dạng 'way/158465672'. Là tiêu chí định danh của địa điểm (OntoClean Identity) — khai khoá bằng owl:hasKey."@vi ;
+    rdfs:domain hust:Place ;
+    rdfs:range xsd:string .
+
+hust:producedByProject a owl:ObjectProperty ;
+    rdfs:label "produced by project"@en,
+        "được tạo bởi dự án"@vi ;
+    rdfs:domain hust:ResearchOutput ;
+    rdfs:range hust:ResearchProject ;
+    owl:inverseOf hust:produces .
+
+hust:produces a owl:ObjectProperty ;
+    rdfs:label "produces"@en,
+        "tạo ra sản phẩm nghiên cứu"@vi ;
+    rdfs:domain hust:ResearchProject ;
+    rdfs:range hust:ResearchOutput ;
+    owl:inverseOf hust:producedByProject .
+
+hust:roleForAcademicEntity a owl:ObjectProperty ;
+    rdfs:label "role for academic entity"@en,
+        "vai trò đối với thực thể học thuật"@vi ;
+    rdfs:domain hust:UniversityRelation ;
+    rdfs:range hust:AcademicEntity ;
+    rdfs:subPropertyOf hust:hasRoleContext .
+
+hust:roleInAcademicActivity a owl:ObjectProperty ;
+    rdfs:label "role in academic activity"@en,
+        "vai trò trong hoạt động học thuật"@vi ;
+    rdfs:domain hust:UniversityRelation ;
+    rdfs:range hust:AcademicActivity ;
+    rdfs:subPropertyOf hust:hasRoleContext .
+
+hust:roleLiaisesWithOrganization a owl:ObjectProperty ;
+    rdfs:label "role liaises with organization"@en,
+        "vai trò làm đầu mối với tổ chức"@vi ;
+    rdfs:domain hust:UniversityRelation ;
+    rdfs:range hust:Organization ;
+    rdfs:subPropertyOf hust:hasRoleContext ;
+    hust:reference <https://www.w3.org/TR/owl-primer/> .
+
+hust:roleTitleLiteral a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "Chức danh theo nguồn"@vi ;
+    rdfs:domain hust:Role ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:unionOf ( xsd:string rdf:langString ) ],
+        xsd:string .
+
+hust:startDate a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "start date"@en,
+        "ngày bắt đầu"@vi ;
+    rdfs:domain hust:UniversityRelation ;
+    rdfs:range xsd:date .
+
+hust:supervisesThesis a owl:ObjectProperty ;
+    rdfs:label "supervises thesis"@en,
+        "hướng dẫn luận văn hoặc luận án"@vi ;
+    rdfs:domain hust:Person ;
+    rdfs:range hust:Thesis ;
+    owl:inverseOf hust:thesisSupervisedBy .
+
+hust:usedInProject a owl:ObjectProperty ;
+    rdfs:label "used in project"@en,
+        "được sử dụng trong dự án"@vi ;
+    rdfs:domain hust:InformationResource ;
+    rdfs:range hust:ResearchProject ;
+    owl:inverseOf hust:usesResource .
+
+hust:usesResource a owl:ObjectProperty ;
+    rdfs:label "uses resource"@en,
+        "sử dụng tài nguyên"@vi ;
+    rdfs:domain hust:ResearchProject ;
+    rdfs:range hust:InformationResource ;
+    owl:inverseOf hust:usedInProject .
+
+schema:alternateName a owl:DatatypeProperty .
+
+schema:legalName a owl:DatatypeProperty .
+
+schema:streetAddress a owl:DatatypeProperty .
+
+hust:AcademicDegree a owl:Class ;
+    rdfs:label "Học vị"@vi .
+
+hust:AcademicEntity a owl:Class ;
+    rdfs:label "Academic entity"@en,
+        "Thực thể học thuật"@vi ;
+    owl:disjointWith hust:Person,
+        hust:UniversityRelation ;
+    hust:reference schema:Role .
+
+hust:AcademicSupport a owl:Class ;
+    rdfs:label "Academic support"@en,
+        "Hỗ trợ học thuật"@vi ;
+    rdfs:seeAlso <https://sdh.hust.edu.vn/Upload/19/files/Quyche/2024/10_2%20Quy%20ch%E1%BA%BF%20TCQL%20%C4%90%C3%A0o%20t%E1%BA%A1o_2024_VP%C4%90H_final_%C4%91%C3%A3%20k%C3%BD.pdf>,
+        <https://www.spc.ox.ac.uk/people/staff> ;
+    rdfs:subClassOf hust:Work ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://sdh.hust.edu.vn/Upload/19/files/Quyche/2024/10_2%20Quy%20ch%E1%BA%BF%20TCQL%20%C4%90%C3%A0o%20t%E1%BA%A1o_2024_VP%C4%90H_final_%C4%91%C3%A3%20k%C3%BD.pdf>,
+        <https://www.spc.ox.ac.uk/people/staff> .
+
+hust:AdmissionsOfficer a owl:Class ;
+    rdfs:label "Admissions officer"@en,
+        "Cán bộ tuyển sinh"@vi ;
+    rdfs:seeAlso <https://ts.hust.edu.vn/p/lien-he> ;
+    rdfs:subClassOf hust:AdministrativeProfessional ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://ts.hust.edu.vn/p/lien-he> ;
+    hust:roleFamily "AdministrativeProfessional" .
+
+hust:AlumniNetworkPresident a owl:Class ;
+    rdfs:label "Alumni network president"@en,
+        "Chủ tịch mạng lưới cựu sinh viên"@vi ;
+    rdfs:seeAlso <https://hust.edu.vn/vi/news/hoat-dong-chung/dai-hoc-bach-khoa-ha-noi-ra-mat-ban-bien-tap-moi-tap-chi-khoa-hoc-va-cong-nghe-nhiem-ky-2026-2032-655905.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://hust.edu.vn/vi/news/hoat-dong-chung/dai-hoc-bach-khoa-ha-noi-ra-mat-ban-bien-tap-moi-tap-chi-khoa-hoc-va-cong-nghe-nhiem-ky-2026-2032-655905.html> ;
+    hust:relatedRoleCategory hust:ExternalRelationsPartnership ;
+    hust:roleFamily "ExternalRelationsPartnership" .
+
+hust:CommitteeMember a owl:Class ;
+    rdfs:label "Committee member"@en,
+        "Ủy viên/thành viên hội đồng, ban"@vi ;
+    rdfs:seeAlso <https://soict.hust.edu.vn/dang-uy-truong.html> ;
+    rdfs:subClassOf hust:GovernanceRepresentation ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://soict.hust.edu.vn/dang-uy-truong.html> ;
+    hust:roleFamily "GovernanceRepresentation" .
+
+hust:CommitteeViceChair a owl:Class ;
+    rdfs:label "Committee vice chair"@en,
+        "Phó chủ tịch/phó trưởng hội đồng, ban"@vi ;
+    rdfs:seeAlso <https://soict.hust.edu.vn/dang-uy-truong.html> ;
+    rdfs:subClassOf hust:GovernanceRepresentation ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://soict.hust.edu.vn/dang-uy-truong.html> ;
+    hust:roleFamily "GovernanceRepresentation" .
+
+hust:CommunicationsMedia a owl:Class ;
+    rdfs:label "Communications and media"@en,
+        "Truyền thông và báo chí"@vi ;
+    rdfs:seeAlso <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/trung-tam-truyen-thong-va-tri-thuc-so.html> ;
+    rdfs:subClassOf hust:Work ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/trung-tam-truyen-thong-va-tri-thuc-so.html> ;
+    hust:relatedRoleCategory hust:AdministrativeProfessional ;
+    hust:roleFamily "AdministrativeProfessional" .
+
+hust:DeputyEditorInChief a owl:Class ;
+    rdfs:label "Deputy editor-in-chief"@en,
+        "Phó tổng biên tập"@vi ;
+    rdfs:seeAlso <https://library.hust.edu.vn/vi/node/56>,
+        <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/nha-xuat-ban-bach-khoa-69599.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://library.hust.edu.vn/vi/node/56>,
+        <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/nha-xuat-ban-bach-khoa-69599.html> ;
+    hust:relatedRoleCategory hust:EditorialContent,
+        hust:PublishingEditorial ;
+    hust:roleFamily "PublishingEditorial" .
+
+hust:Donor a owl:Class ;
+    rdfs:label "Donor"@en,
+        "Nhà tài trợ/nhà hảo tâm"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-hop-tac-doi-ngoai.html> ;
+    rdfs:subClassOf hust:Affiliation ;
+    hust:evidenceType "functional-inference" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-hop-tac-doi-ngoai.html> ;
+    hust:relatedRoleCategory hust:ExternalRelationsPartnership ;
+    hust:roleFamily "ExternalRelationsPartnership" .
+
+hust:EditorInChief a owl:Class ;
+    rdfs:label "Editor-in-chief"@en,
+        "Tổng biên tập"@vi ;
+    rdfs:seeAlso <https://hust.edu.vn/vi/news/hoat-dong-chung/dai-hoc-bach-khoa-ha-noi-ra-mat-ban-bien-tap-moi-tap-chi-khoa-hoc-va-cong-nghe-nhiem-ky-2026-2032-655905.html>,
+        <https://www.hust.edu.vn/vi/nghien-cuu/tap-chi-khoa-hoc-cong-nghe/jst-650113.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://hust.edu.vn/vi/news/hoat-dong-chung/dai-hoc-bach-khoa-ha-noi-ra-mat-ban-bien-tap-moi-tap-chi-khoa-hoc-va-cong-nghe-nhiem-ky-2026-2032-655905.html>,
+        <https://www.hust.edu.vn/vi/nghien-cuu/tap-chi-khoa-hoc-cong-nghe/jst-650113.html> ;
+    hust:relatedRoleCategory hust:EditorialContent,
+        hust:PublishingEditorial ;
+    hust:roleFamily "PublishingEditorial" .
+
+hust:GovernmentAgency a owl:Class ;
+    rdfs:label "Government Agency"@en,
+        "Cơ quan nhà nước"@vi ;
+    rdfs:subClassOf hust:Organization,
+        schema:GovernmentOrganization .
+
+hust:ITDigital a owl:Class ;
+    rdfs:label "IT / digital"@en,
+        "CNTT / số"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html>,
+        <https://www.pmb.ox.ac.uk/vacancy/it-officer-systems-administrator-socit-consortium> ;
+    rdfs:subClassOf hust:Work ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html>,
+        <https://www.pmb.ox.ac.uk/vacancy/it-officer-systems-administrator-socit-consortium> .
+
+hust:InnovationTechnologyTransfer a owl:Class ;
+    rdfs:label "Innovation and technology transfer"@en,
+        "Đổi mới sáng tạo và chuyển giao công nghệ"@vi ;
+    rdfs:seeAlso <https://hust.edu.vn/uploads/sys/su-kien-noi-bat/2025_06/trung-tam-sang-tao-va-khoi-nghiep-sinh-vien-copy.pdf>,
+        <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-khoa-hoc-cong-nghe.html> ;
+    rdfs:subClassOf hust:Work ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://hust.edu.vn/uploads/sys/su-kien-noi-bat/2025_06/trung-tam-sang-tao-va-khoi-nghiep-sinh-vien-copy.pdf>,
+        <https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-khoa-hoc-cong-nghe.html> ;
+    hust:relatedRoleCategory hust:AdministrativeProfessional ;
+    hust:roleFamily "AdministrativeProfessional" .
+
+hust:InternationalRelationsOfficer a owl:Class ;
+    rdfs:label "International relations officer"@en,
+        "Chuyên viên hợp tác đối ngoại"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-hop-tac-doi-ngoai.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "explicit-function" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-hop-tac-doi-ngoai.html> ;
+    hust:relatedRoleCategory hust:ExternalRelationsPartnership ;
+    hust:roleFamily "ExternalRelationsPartnership" .
+
+hust:Learner a owl:Class ;
+    rdfs:label "Learner"@en,
+        "Người học"@vi ;
+    rdfs:seeAlso <https://me.stanford.edu/people>,
+        <https://www.hust.edu.vn/vi/sinh-vien/> ;
+    rdfs:subClassOf hust:Affiliation ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://me.stanford.edu/people>,
+        <https://www.hust.edu.vn/vi/sinh-vien/> .
+
+hust:Liaison a owl:Class ;
+    rdfs:label "Liaison"@en,
+        "Đầu mối/liên lạc"@vi ;
+    rdfs:seeAlso <https://www.w3.org/TR/owl-primer/> ;
+    rdfs:subClassOf hust:Work ;
+    hust:reference <https://www.w3.org/TR/owl-primer/> .
+
+hust:PostgraduateStudent a owl:Class ;
+    rdfs:label "Người học sau đại học"@vi ;
+    rdfs:subClassOf hust:Student ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( hust:Person [ a owl:Restriction ;
+                        owl:onProperty hust:hasUniversityRelation ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:unionOf ( hust:GraduateStudent ) ] ] ) ] .
+
+hust:ProcurementSpecialist a owl:Class ;
+    rdfs:label "Procurement specialist"@en,
+        "Chuyên viên mua sắm"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html> ;
+    hust:relatedRoleCategory hust:FinanceProcurementLegal ;
+    hust:roleFamily "FinanceProcurementLegal" .
+
+hust:ResearchEntity a owl:Class ;
+    rdfs:label "Research entity"@en,
+        "Thực thể nghiên cứu"@vi .
+
+hust:ResearcherTitle a owl:Class ;
+    rdfs:label "Researcher"@en,
+        "Nghiên cứu viên"@vi ;
+    rdfs:seeAlso <https://scls.hust.edu.vn/vi/organs/>,
+        <https://smse.hust.edu.vn/vi/organs/vieworg/Trung-tam-ky-thuat-16/> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://scls.hust.edu.vn/vi/organs/>,
+        <https://smse.hust.edu.vn/vi/organs/vieworg/Trung-tam-ky-thuat-16/> ;
+    hust:relatedRoleCategory hust:Research ;
+    hust:roleFamily "Research" .
+
+hust:VisitingStudentResearcher a owl:Class ;
+    rdfs:label "Visiting student researcher"@en,
+        "Sinh viên nghiên cứu thăm"@vi ;
+    rdfs:seeAlso <https://centerfordesignresearch.stanford.edu/people> ;
+    rdfs:subClassOf hust:VisitingStudent ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://centerfordesignresearch.stanford.edu/people> ;
+    hust:relatedRoleCategory hust:Research ;
+    hust:roleFamily "Research" .
+
+hust:WelfareHealth a owl:Class ;
+    rdfs:label "Welfare / health"@en,
+        "Phúc lợi / y tế"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html>,
+        <https://www.ox.ac.uk/students/welfare/wellbeing-at-oxford>,
+        <https://www.spc.ox.ac.uk/people/staff> ;
+    rdfs:subClassOf hust:Work ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html>,
+        <https://www.ox.ac.uk/students/welfare/wellbeing-at-oxford>,
+        <https://www.spc.ox.ac.uk/people/staff> .
+
+hust:academic_ExamPeriod a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicPeriod .
+
+hust:academic_ResearchProject a owl:Class ;
+    rdfs:subClassOf hust:academic_Research .
+
+hust:academic_Thesis a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicActivity .
+
+hust:authoredBy a owl:ObjectProperty ;
+    rdfs:label "authored by"@en,
+        "được viết bởi"@vi ;
+    rdfs:domain hust:InformationResource ;
+    rdfs:range hust:Person ;
+    owl:inverseOf hust:authorsInformationResource .
+
+hust:campusOf a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "campus of"@en,
+        "là cơ sở của"@vi .
+
+hust:locatedIn a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "located in"@en,
+        "nằm trong"@vi ;
+    rdfs:comment "Bắc cầu: Phòng → Toà nhà → Khuôn viên → Phường → Thành phố → Quốc gia."@vi ;
+    rdfs:domain hust:Place ;
+    rdfs:range hust:Place ;
+    owl:inverseOf hust:containsPlace .
+
+hust:roleContactPointFor a owl:ObjectProperty ;
+    rdfs:label "role is contact point for organization"@en,
+        "vai trò là đầu mối liên hệ cho tổ chức"@vi ;
+    rdfs:domain hust:UniversityRelation ;
+    rdfs:range hust:Organization ;
+    rdfs:subPropertyOf hust:hasRoleContext ;
+    hust:reference <https://www.w3.org/TR/owl-primer/> .
+
+hust:roleCoordinatesPartnershipWith a owl:ObjectProperty ;
+    rdfs:label "role coordinates partnership with organization"@en,
+        "vai trò điều phối hợp tác với tổ chức"@vi ;
+    rdfs:domain hust:UniversityRelation ;
+    rdfs:range hust:Organization ;
+    rdfs:subPropertyOf hust:hasRoleContext ;
+    hust:reference <https://www.w3.org/TR/owl-primer/> .
+
+hust:roleHeldBy a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "role held by"@en,
+        "vai trò do người đảm nhiệm"@vi ;
+    rdfs:domain hust:UniversityRelation ;
+    rdfs:range hust:Person ;
+    owl:inverseOf hust:hasUniversityRelation ;
+    owl:propertyDisjointWith hust:roleWithPerson ;
+    hust:reference schema:Role .
+
+hust:roleWithPerson a owl:ObjectProperty ;
+    rdfs:label "role with person"@en,
+        "vai trò đối với người"@vi ;
+    rdfs:domain hust:UniversityRelation ;
+    rdfs:range hust:Person ;
+    rdfs:subPropertyOf hust:hasRoleContext .
+
+hust:thesisSupervisedBy a owl:ObjectProperty ;
+    rdfs:label "thesis supervised by"@en,
+        "luận văn hoặc luận án được hướng dẫn bởi"@vi ;
+    rdfs:domain hust:Thesis ;
+    rdfs:range hust:Person ;
+    owl:inverseOf hust:supervisesThesis .
+
+hust:AcademicStaff a owl:Class ;
+    rdfs:label "Nhân sự giảng dạy và nghiên cứu"@vi ;
+    rdfs:subClassOf hust:Staff ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( hust:Person [ a owl:Restriction ;
+                        owl:onProperty hust:hasUniversityRelation ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:unionOf ( hust:FacultyMember hust:ResearchLaboratoryMember hust:ResearchLeadership hust:Research hust:ResearcherTitle hust:TeachingAssistant hust:Teaching hust:VisitingStudentResearcher ) ] ] ) ] .
+
+hust:AlumniAffiliation a owl:Class ;
+    rdfs:label "Alumnus / Alumna"@en,
+        "Cựu sinh viên"@vi ;
+    rdfs:seeAlso <https://hust.edu.vn/vi/sinh-vien/cuu-sinh-vien/cuu-sinh-vien-654599.html> ;
+    rdfs:subClassOf hust:ExternalAffiliation ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://hust.edu.vn/vi/sinh-vien/cuu-sinh-vien/cuu-sinh-vien-654599.html> ;
+    hust:roleFamily "ExternalAffiliation" .
+
+hust:CurriculumEntry a owl:Class ;
+    rdfs:label "Vị trí học phần trong khung chương trình"@vi ;
+    rdfs:subClassOf hust:academic_AcademicEntity .
+
+hust:DegreeHolder a owl:Class ;
+    rdfs:label "Người có học vị được ghi nhận"@vi ;
+    rdfs:subClassOf hust:Person ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( hust:Person [ a owl:Restriction ;
+                        owl:onProperty hust:hasDegree ;
+                        owl:someValuesFrom hust:AcademicDegree ] ) ] .
+
+hust:DigitalResource a owl:Class ;
+    rdfs:label "Digital resource"@en,
+        "Tài nguyên số"@vi ;
+    rdfs:subClassOf hust:InformationResource .
+
+hust:EditorialContent a owl:Class ;
+    rdfs:label "Editorial content"@en,
+        "Biên tập nội dung"@vi ;
+    rdfs:seeAlso <https://www.w3.org/TR/owl-primer/> ;
+    rdfs:subClassOf hust:Work ;
+    hust:reference <https://www.w3.org/TR/owl-primer/> .
+
+hust:FinanceProcurementLegal a owl:Class ;
+    rdfs:label "Finance / procurement / legal"@en,
+        "Tài chính / mua sắm / pháp chế"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html>,
+        <https://www.univ.ox.ac.uk/about/organisation-and-contacts/> ;
+    rdfs:subClassOf hust:Work ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html>,
+        <https://www.univ.ox.ac.uk/about/organisation-and-contacts/> .
+
+hust:GraduateStudent a owl:Class ;
+    rdfs:label "Graduate student"@en,
+        "Học viên sau đại học"@vi ;
+    rdfs:seeAlso <https://hust.edu.vn/vi/tuyen-sinh/thong-tin-tuyen-sinh-15/thong-tin-tuyen-sinh-ncs-499909.html>,
+        <https://me.stanford.edu/people> ;
+    rdfs:subClassOf hust:StudentAffiliation ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://hust.edu.vn/vi/tuyen-sinh/thong-tin-tuyen-sinh-15/thong-tin-tuyen-sinh-ncs-499909.html>,
+        <https://me.stanford.edu/people> ;
+    hust:roleFamily "StudentAffiliation" .
+
+hust:QualityAssuranceAccreditation a owl:Class ;
+    rdfs:label "Quality assurance and accreditation"@en,
+        "Đảm bảo và kiểm định chất lượng"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-quan-ly-chat-luong.html> ;
+    rdfs:subClassOf hust:Work ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-quan-ly-chat-luong.html> ;
+    hust:relatedRoleCategory hust:AdministrativeProfessional ;
+    hust:roleFamily "AdministrativeProfessional" .
+
+hust:ResearchLaboratoryMember a owl:Class ;
+    rdfs:label "Research laboratory member"@en,
+        "Thành viên phòng thí nghiệm nghiên cứu"@vi ;
+    rdfs:seeAlso <https://research.hust.edu.vn/> ;
+    rdfs:subClassOf hust:Affiliation ;
+    hust:reference <https://research.hust.edu.vn/> ;
+    hust:relatedRoleCategory hust:Research .
+
+hust:SourceEvidence a owl:Class ;
+    rdfs:label "Bằng chứng nguồn"@vi .
+
+hust:Spokesperson a owl:Class ;
+    rdfs:label "Spokesperson"@en,
+        "Phát ngôn"@vi ;
+    rdfs:seeAlso <https://www.w3.org/TR/owl-primer/> ;
+    rdfs:subClassOf hust:Work ;
+    hust:reference <https://www.w3.org/TR/owl-primer/> .
+
+hust:Staff a owl:Class ;
+    rdfs:label "Nhân sự đại học"@vi ;
+    rdfs:subClassOf hust:Person ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:unionOf ( hust:AcademicStaff hust:AdministrativeStaff hust:Manager ) ] .
+
+hust:Student a owl:Class ;
+    rdfs:label "Người học"@vi ;
+    rdfs:subClassOf hust:Person ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( hust:Person [ a owl:Restriction ;
+                        owl:onProperty hust:hasUniversityRelation ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:unionOf ( hust:StudentAffiliation ) ] ] ) ] .
+
+hust:TeachingAssistant a owl:Class ;
+    rdfs:label "Teaching assistant"@en,
+        "Trợ giảng"@vi ;
+    rdfs:seeAlso <https://coi.mit.edu/opa-guidance/permitted-time> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hust:roleInAcademicActivity ;
+            owl:someValuesFrom hust:AcademicActivity ],
+        hust:Role ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://coi.mit.edu/opa-guidance/permitted-time> ;
+    hust:relatedRoleCategory hust:Learner,
+        hust:Teaching ;
+    hust:roleFamily "Learner" .
+
+hust:University a owl:Class ;
+    rdfs:label "University"@en,
+        "Đại học"@vi ;
+    rdfs:comment "Không chia lớp con theo hình thức sở hữu hay hạng cơ sở (thuộc tính đổi được, vi phạm Rigidity). HUST đổi từ 'Trường Đại học' thành 'Đại học' năm 2022 mà vẫn là cùng một cá thể."@vi ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hust:hasCampus ;
+            owl:someValuesFrom hust:Campus ],
+        <http://dbpedia.org/ontology/University>,
+        hust:EducationalOrganization,
+        schema:CollegeOrUniversity .
+
+hust:academic_Building a owl:Class ;
+    rdfs:subClassOf hust:academic_Place .
+
+hust:academic_Curriculum a owl:Class ;
+    rdfs:label "Khung chương trình học"@vi ;
+    rdfs:subClassOf hust:academic_AcademicEntity .
+
+hust:academic_Major a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicEntity .
+
+hust:academic_Publication a owl:Class ;
+    rdfs:subClassOf hust:academic_Research .
+
+hust:academic_Research a owl:Class .
+
+hust:academic_Semester a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicPeriod .
+
+hust:academic_Seminar a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicActivity .
+
+hust:academic_Workshop a owl:Class ;
+    rdfs:subClassOf hust:academic_ConferenceWorkshop .
+
+hust:hasCampus a owl:ObjectProperty ;
+    rdfs:label "has campus"@en,
+        "có cơ sở"@vi ;
+    rdfs:domain hust:EducationalOrganization ;
+    rdfs:range hust:Campus ;
+    owl:inverseOf hust:campusOf .
+
+hust:hasDegree a owl:ObjectProperty ;
+    rdfs:label "có học vị"@vi ;
+    rdfs:domain hust:DegreeHolder ;
+    rdfs:range hust:AcademicDegree .
+
+hust:hasRole a owl:ObjectProperty ;
+    rdfs:label "Có chức danh"@vi ;
+    rdfs:domain hust:Person ;
+    rdfs:range hust:Role ;
+    rdfs:subPropertyOf hust:hasUniversityRelation ;
+    hust:reference schema:Role .
+
+hust:roleAtOrganization a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "role at organization"@en,
+        "vai trò tại tổ chức"@vi ;
+    rdfs:domain hust:UniversityRelation ;
+    rdfs:range hust:Organization ;
+    rdfs:subPropertyOf hust:hasRoleContext ;
+    hust:reference <https://www.w3.org/TR/vocab-org/> .
+
+hust:roleRepresentsOrganization a owl:ObjectProperty ;
+    rdfs:label "role represents organization"@en,
+        "vai trò đại diện cho tổ chức"@vi ;
+    rdfs:domain hust:UniversityRelation ;
+    rdfs:range hust:Organization ;
+    rdfs:subPropertyOf hust:hasRoleContext ;
+    hust:reference <https://www.w3.org/TR/owl-primer/> .
+
+hust:AcademicActivity a owl:Class ;
+    rdfs:label "Academic activity"@en,
+        "Hoạt động học thuật"@vi ;
+    owl:disjointWith hust:Person,
+        hust:UniversityRelation ;
+    hust:reference schema:Role .
+
+hust:AcademicAdministration a owl:Class ;
+    rdfs:label "Academic administration"@en,
+        "Quản lý đào tạo/học vụ"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-dao-tao.html> ;
+    rdfs:subClassOf hust:Work ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-dao-tao.html> ;
+    hust:relatedRoleCategory hust:AdministrativeProfessional ;
+    hust:roleFamily "AdministrativeProfessional" .
+
+hust:Campus a owl:Class ;
+    rdfs:label "Campus"@en,
+        "Cơ sở / Khuôn viên"@vi ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass hust:EducationalOrganization ;
+            owl:onProperty hust:campusOf ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        hust:Place .
+
+hust:LearningDocument a owl:Class ;
+    rdfs:label "Learning document"@en,
+        "Tài liệu học tập"@vi ;
+    rdfs:subClassOf hust:Document .
+
+hust:Room a owl:Class ;
+    rdfs:label "Room"@en,
+        "Phòng"@vi ;
+    rdfs:subClassOf hust:Facility,
+        schema:Room .
+
+hust:academic_AcademicActivity a owl:Class .
+
+hust:academic_CourseOffering a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicActivity .
+
+hust:academic_Degree a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicEntity .
+
+hust:academic_Exam a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicActivity .
+
+hust:academic_Room a owl:Class ;
+    rdfs:subClassOf hust:academic_Place .
+
+hust:Accountant a owl:Class ;
+    rdfs:label "Accountant"@en,
+        "Kế toán"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html> ;
+    hust:relatedRoleCategory hust:FinanceProcurementLegal ;
+    hust:roleFamily "FinanceProcurementLegal" .
+
+hust:AdministrativeArea a owl:Class ;
+    rdfs:label "Administrative Area"@en,
+        "Đơn vị hành chính"@vi ;
+    rdfs:subClassOf hust:Place,
+        schema:AdministrativeArea .
+
+hust:AdmissionOffering a owl:Class ;
+    rdfs:label "Đợt tuyển sinh chương trình"@vi .
+
+hust:FacultyMember a owl:Class ;
+    rdfs:label "Faculty member"@en,
+        "Thành viên giảng huấn / giảng viên"@vi ;
+    rdfs:seeAlso <https://centerfordesignresearch.stanford.edu/people>,
+        <https://coi.mit.edu/opa-guidance/permitted-time> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://centerfordesignresearch.stanford.edu/people>,
+        <https://coi.mit.edu/opa-guidance/permitted-time> ;
+    hust:relatedRoleCategory hust:Teaching ;
+    hust:roleFamily "Teaching" .
+
+hust:Publication a owl:Class ;
+    rdfs:label "Publication"@en,
+        "Công bố khoa học"@vi ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hust:authoredBy ;
+            owl:someValuesFrom hust:Person ],
+        hust:Document,
+        hust:ResearchOutput .
+
+hust:ResearchLeadership a owl:Class ;
+    rdfs:label "Research leadership"@en,
+        "Lãnh đạo nghiên cứu"@vi ;
+    rdfs:seeAlso <https://www.w3.org/TR/owl-primer/> ;
+    rdfs:subClassOf hust:Role ;
+    hust:reference <https://www.w3.org/TR/owl-primer/> ;
+    hust:relatedRoleCategory hust:Research .
+
+hust:Teaching a owl:Class ;
+    rdfs:label "Teaching"@en,
+        "Giảng dạy"@vi ;
+    rdfs:seeAlso <https://coi.mit.edu/opa-guidance/permitted-time>,
+        <https://smse.hust.edu.vn/vi/organs/> ;
+    rdfs:subClassOf hust:Work ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://coi.mit.edu/opa-guidance/permitted-time>,
+        <https://smse.hust.edu.vn/vi/organs/> .
+
+hust:Thesis a owl:Class ;
+    rdfs:label "Thesis"@en,
+        "Luận văn hoặc luận án"@vi ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hust:thesisSupervisedBy ;
+            owl:someValuesFrom hust:Person ],
+        hust:Document,
+        hust:ResearchOutput .
+
+hust:academic_AcademicPeriod a owl:Class .
+
+hust:Document a owl:Class ;
+    rdfs:label "Document"@en,
+        "Tài liệu"@vi ;
+    rdfs:subClassOf hust:InformationResource .
+
+hust:Event a owl:Class ;
+    rdfs:label "Sự kiện"@vi ;
+    rdfs:subClassOf hust:AcademicActivity .
+
+hust:ExternalAffiliation a owl:Class ;
+    rdfs:label "External / affiliation"@en,
+        "Liên kết bên ngoài"@vi ;
+    rdfs:seeAlso <https://adminguide.stanford.edu/chapters/human-resources/general-employment-policies/definitions>,
+        <https://centerfordesignresearch.stanford.edu/people>,
+        <https://hust.edu.vn/vi/sinh-vien/cuu-sinh-vien/cuu-sinh-vien-654599.html> ;
+    rdfs:subClassOf hust:Affiliation ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://adminguide.stanford.edu/chapters/human-resources/general-employment-policies/definitions>,
+        <https://centerfordesignresearch.stanford.edu/people>,
+        <https://hust.edu.vn/vi/sinh-vien/cuu-sinh-vien/cuu-sinh-vien-654599.html> .
+
+hust:StudentAffiliation a owl:Class ;
+    rdfs:label "Student"@en,
+        "Sinh viên"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/sinh-vien/> ;
+    rdfs:subClassOf hust:Learner ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://www.hust.edu.vn/vi/sinh-vien/> ;
+    hust:roleFamily "Learner" .
+
+hust:StudentOrganization a owl:Class ;
+    rdfs:label "Student organization"@en,
+        "Tổ chức sinh viên"@vi ;
+    rdfs:seeAlso <https://scls.hust.edu.vn/vi/sinh-vien/to-chuc-doan-hoi/ban-chap-hanh-dtn-truong-hoa-va-khss-nhiem-ky-2025-2026-54.html>,
+        <https://sem.hust.edu.vn/cau-lac-bo-sinh-vien-2>,
+        <https://svbk.hust.edu.vn/vi/about/ban-chap-hanh-hoi-sinh-vien-dai-hoc-207321.html> ;
+    rdfs:subClassOf hust:Affiliation ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://scls.hust.edu.vn/vi/sinh-vien/to-chuc-doan-hoi/ban-chap-hanh-dtn-truong-hoa-va-khss-nhiem-ky-2025-2026-54.html>,
+        <https://sem.hust.edu.vn/cau-lac-bo-sinh-vien-2>,
+        <https://svbk.hust.edu.vn/vi/about/ban-chap-hanh-hoi-sinh-vien-dai-hoc-207321.html> .
+
+hust:academic_Place a owl:Class .
+
+hust:academic_Student a owl:Class ;
+    rdfs:subClassOf hust:academic_Person .
+
+hust:PublishingEditorial a owl:Class ;
+    rdfs:label "Publishing and editorial"@en,
+        "Xuất bản và biên tập"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/nha-xuat-ban-bach-khoa-69599.html>,
+        <https://www.hust.edu.vn/vi/nghien-cuu/tap-chi-khoa-hoc-cong-nghe/jst-650113.html> ;
+    rdfs:subClassOf hust:Work ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/nha-xuat-ban-bach-khoa-69599.html>,
+        <https://www.hust.edu.vn/vi/nghien-cuu/tap-chi-khoa-hoc-cong-nghe/jst-650113.html> ;
+    hust:relatedRoleCategory hust:AdministrativeProfessional ;
+    hust:roleFamily "AdministrativeProfessional" .
+
+hust:Research a owl:Class ;
+    rdfs:label "Research"@en,
+        "Nghiên cứu"@vi ;
+    rdfs:seeAlso <https://centerfordesignresearch.stanford.edu/people>,
+        <https://coi.mit.edu/opa-guidance/permitted-time>,
+        <https://scls.hust.edu.vn/vi/organs/> ;
+    rdfs:subClassOf hust:Work ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://centerfordesignresearch.stanford.edu/people>,
+        <https://coi.mit.edu/opa-guidance/permitted-time>,
+        <https://scls.hust.edu.vn/vi/organs/> .
+
+hust:StudentSupportCareer a owl:Class ;
+    rdfs:label "Student support, career and employability"@en,
+        "Hỗ trợ sinh viên, hướng nghiệp và việc làm"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html> ;
+    rdfs:subClassOf hust:AcademicSupport ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html> ;
+    hust:roleFamily "AcademicSupport" .
+
+hust:EducationalOrganization a owl:Class ;
+    rdfs:label "Educational Organization"@en,
+        "Cơ sở giáo dục"@vi ;
+    rdfs:subClassOf hust:Organization,
+        schema:EducationalOrganization ;
+    owl:hasKey ( hust:institutionCode ) .
+
+hust:Facility a owl:Class ;
+    rdfs:label "Facility"@en,
+        "Công trình / Hạng mục"@vi ;
+    rdfs:subClassOf hust:Place .
+
+hust:ResearchOutput a owl:Class ;
+    rdfs:label "Research output"@en,
+        "Sản phẩm nghiên cứu"@vi ;
+    rdfs:subClassOf hust:ResearchEntity .
+
+hust:ResearchProject a owl:Class ;
+    rdfs:label "Research project"@en,
+        "Dự án nghiên cứu"@vi ;
+    rdfs:subClassOf hust:ResearchEntity ;
+    owl:disjointWith hust:ResearchOutput .
+
+hust:academic_AcademicEntity a owl:Class .
+
+hust:academic_AcademicProgram a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicEntity .
+
+hust:academic_AcademicStaff a owl:Class ;
+    rdfs:subClassOf hust:academic_Person .
+
+hust:hasRoleContext a owl:ObjectProperty ;
+    rdfs:label "has role context"@en,
+        "có ngữ cảnh vai trò"@vi ;
+    rdfs:domain hust:UniversityRelation ;
+    rdfs:range owl:Thing ;
+    owl:inverseOf hust:isRoleContextOf ;
+    hust:reference <https://www.w3.org/TR/owl-primer/> .
+
+hust:Affiliation a owl:Class ;
+    rdfs:label "Affiliation"@en,
+        "Tư cách tham gia"@vi ;
+    rdfs:comment "Tư cách tham gia hoặc liên kết, ví dụ sinh viên, cựu sinh viên, khách, thành viên đội tuyển; không phải chức danh công việc."@vi ;
+    rdfs:subClassOf hust:UniversityRelation .
+
+hust:Building a owl:Class ;
+    rdfs:label "Building"@en,
+        "Toà nhà"@vi ;
+    rdfs:subClassOf <http://dbpedia.org/ontology/Building>,
+        hust:Facility .
+
+hust:ExternalRelationsPartnership a owl:Class ;
+    rdfs:label "External relations and partnership"@en,
+        "Đối ngoại và quan hệ đối tác"@vi ;
+    rdfs:seeAlso <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-hop-tac-doi-ngoai.html> ;
+    rdfs:subClassOf hust:Work ;
+    hust:evidenceType "explicit-title" ;
+    hust:reference <https://www.hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-hop-tac-doi-ngoai.html> ;
+    hust:relatedRoleCategory hust:AdministrativeProfessional ;
+    hust:roleFamily "AdministrativeProfessional" .
+
+hust:GovernanceRepresentation a owl:Class ;
+    rdfs:label "Governance / representation"@en,
+        "Quản trị / đại diện"@vi ;
+    rdfs:seeAlso <https://soict.hust.edu.vn/dang-uy-truong.html>,
+        <https://svbk.hust.edu.vn/vi/about/ban-chap-hanh-hoi-sinh-vien-dai-hoc-207321.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://soict.hust.edu.vn/dang-uy-truong.html>,
+        <https://svbk.hust.edu.vn/vi/about/ban-chap-hanh-hoi-sinh-vien-dai-hoc-207321.html> .
+
+hust:InformationResource a owl:Class ;
+    rdfs:label "Information resource"@en,
+        "Tài nguyên thông tin"@vi .
+
+hust:academic_Course a owl:Class ;
+    rdfs:label "Học phần"@vi ;
+    rdfs:subClassOf hust:academic_AcademicEntity .
+
+hust:academic_Role a owl:Class .
+
+hust:Place a owl:Class ;
+    rdfs:label "Place"@en,
+        "Địa điểm"@vi ;
+    rdfs:comment "Khai lại đúng như mô-đun People & Roles (cùng IRI). Tiêu chí định danh: hình học/vị trí."@vi ;
+    rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>,
+        schema:Place ;
+    owl:hasKey ( hust:osmId ) .
+
+hust:UniversityUnit a owl:Class ;
+    rdfs:label "University Unit"@en,
+        "Đơn vị thuộc đại học"@vi ;
+    rdfs:comment "Mọi đơn vị thuộc đại học đều (trực tiếp hoặc bắc cầu) là đơn vị con của một đại học."@vi ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty org:subOrganizationOf ;
+            owl:someValuesFrom hust:University ],
+        org:OrganizationalUnit,
+        hust:Organization .
+
+hust:academic_Organization a owl:Class ;
+    rdfs:subClassOf hust:academic_AcademicEntity .
+
+hust:academic_Person a owl:Class .
+
+hust:AdministrativeProfessional a owl:Class ;
+    rdfs:label "Administrative / professional"@en,
+        "Hành chính / chuyên môn"@vi ;
+    rdfs:seeAlso <https://ts.hust.edu.vn/p/lien-he>,
+        <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://ts.hust.edu.vn/p/lien-he>,
+        <https://www.hust.edu.vn/vi/su-kien-noi-bat/thong-bao-chung/thong-bao-tuyen-dung-dot-1-nam-2026-654794.html> .
+
+hust:Achievement a owl:Class ;
+    rdfs:label "Thành tích và danh hiệu"@vi ;
+    owl:disjointWith hust:Person,
+        hust:UniversityRelation .
+
+xsd:date a rdfs:Datatype .
+
+hust:LeadershipManagement a owl:Class ;
+    rdfs:label "Leadership / management"@en,
+        "Lãnh đạo / quản lý"@vi ;
+    rdfs:seeAlso <https://smse.hust.edu.vn/vi/organs/>,
+        <https://soict.hust.edu.vn/dang-uy-truong.html> ;
+    rdfs:subClassOf hust:Role ;
+    hust:evidenceType "legacy-public-source" ;
+    hust:reference <https://smse.hust.edu.vn/vi/organs/>,
+        <https://soict.hust.edu.vn/dang-uy-truong.html> .
+
+hust:UniversityRelation a owl:Class ;
+    rdfs:label "University relation"@en,
+        "Quan hệ với đại học"@vi ;
+    rdfs:comment "In this ontology profile, role TYPES such as LecturerTitle are owl:Class subclasses of Role. Concrete contextual role occurrences are individuals of those classes. This intentionally differs from W3C ORG's common pattern where abstract roles are org:Role individuals."@en ;
+    rdfs:seeAlso schema:Role,
+        <https://www.w3.org/TR/vocab-org/> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass hust:Organization ;
+            owl:onProperty hust:roleAtOrganization ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty hust:isCurrent ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass hust:Person ;
+            owl:onProperty hust:roleHeldBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+    owl:hasKey ( hust:roleAtOrganization hust:roleHeldBy hust:roleTitleLiteral hust:startDate ) ;
+    hust:reference schema:Role .
+
+hust:Work a owl:Class ;
+    rdfs:label "Assigned work"@en,
+        "Công việc được giao"@vi ;
+    rdfs:comment "Công việc hoặc trách nhiệm đảm nhận, ví dụ giảng dạy, nghiên cứu, điều phối học phần. Một chức danh có thể gắn với nhiều công việc."@vi ;
+    rdfs:subClassOf hust:UniversityRelation ;
+    owl:disjointWith hust:Affiliation .
+
+hust:hasUniversityRelation a owl:ObjectProperty ;
+    rdfs:label "Có quan hệ với đại học"@vi ;
+    rdfs:domain hust:Person ;
+    rdfs:range hust:UniversityRelation .
+
+hust:Organization a owl:Class ;
+    rdfs:label "Organization"@en,
+        "Tổ chức"@vi ;
+    rdfs:comment "Khai lại đúng như mô-đun People & Roles (cùng IRI). Tiêu chí định danh: quyết định thành lập — không phải vị trí."@vi ;
+    rdfs:subClassOf org:Organization,
+        schema:Organization ;
+    owl:disjointWith hust:Place ;
+    hust:reference <https://www.w3.org/TR/vocab-org/> .
+
+hust:Role a owl:Class ;
+    rdfs:label "Position"@en,
+        "Chức danh"@vi ;
+    rdfs:comment "Chức danh hoặc vị trí được bổ nhiệm/ghi nhận, ví dụ giảng viên, trưởng khoa, chuyên viên. Không đồng nhất với công việc được giao."@vi ;
+    rdfs:subClassOf hust:UniversityRelation ;
+    owl:disjointWith hust:Affiliation,
+        hust:Work .
+
+hust:Person a owl:Class ;
+    rdfs:label "Person"@en,
+        "Con người"@vi ;
+    owl:disjointWith hust:UniversityRelation ;
+    owl:hasKey ( hust:email ) ;
+    hust:reference <https://www.w3.org/TR/vocab-org/> .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( hust:AdministrativeArea hust:Campus hust:Facility ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( hust:Building hust:Floor hust:Room hust:OutdoorSportsFacility hust:Gate hust:ParkingFacility ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( hust:AcademicBuilding hust:LibraryBuilding hust:Dormitory hust:SportsBuilding hust:DiningBuilding hust:ServiceBuilding ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( hust:University hust:VocationalCollege hust:K12School ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( hust:School hust:Faculty hust:Department hust:ResearchInstitute hust:Center hust:AdministrativeOffice hust:GoverningCouncil hust:ExecutiveBoard hust:PublishingUnit hust:ResearchLaboratory ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( hust:EducationalOrganization hust:UniversityUnit hust:MassOrganization hust:Enterprise hust:GovernmentAgency ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( hust:Country hust:Province hust:Commune hust:District ) .
+
