@@ -7,8 +7,8 @@
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "individuals": 0,
   "files": {
-    "ontology.ttl": "e425ff6b1c94ed68cc21e5be3f92f167f54f7a6f9c8670649c41a8388e3941d9",
-    "ontology.rdf": "6e0e6563a5f30a4ba588742195efde4245689c360b9017ea52063030ff0056c3",
-    "ontology.jsonld": "97656426f74fe16e568ffa334eb92c98bdf135be85af391127f8e35e691822dd"
+    "ontology.ttl": "cd76addc2bc5eafd9f04e200a53ed9fdc16269fdf38a9bb600b2745bcaf4d488",
+    "ontology.rdf": "ce69b7a126f1c79aeee5dc7f42d2d49d1226bee1823326e999f03d023ae83865",
+    "ontology.jsonld": "8bff7a0211a574e0fc4e8289fa0af37f89a55ade779941e13f152c297f4f01a1"
   }
 }
