@@ -2,13 +2,13 @@
   "classes": 337,
   "object_properties": 93,
   "data_properties": 83,
-  "triples": 3082,
+  "triples": 3081,
   "namespace": "https://samnn152.github.io/hust-ontology-tbox/#",
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "individuals": 0,
   "files": {
-    "ontology.ttl": "19cb26c91e0789fa5c9e571f3d43e3e8f5c342303989d9463dc4ed341601d3e9",
-    "ontology.rdf": "682b126ad1b80b307bf38d857b5de73945a9fa642f7c6df590d42d6df1419d1c",
-    "ontology.jsonld": "0ad557f93d24b123d84f033a1b86cbcd25692f7ec511abe2e9c3c438475abe30"
+    "ontology.ttl": "e425ff6b1c94ed68cc21e5be3f92f167f54f7a6f9c8670649c41a8388e3941d9",
+    "ontology.rdf": "6e0e6563a5f30a4ba588742195efde4245689c360b9017ea52063030ff0056c3",
+    "ontology.jsonld": "97656426f74fe16e568ffa334eb92c98bdf135be85af391127f8e35e691822dd"
   }
 }
